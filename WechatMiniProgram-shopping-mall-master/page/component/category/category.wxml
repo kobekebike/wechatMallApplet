@@ -1,0 +1,40 @@
+<view class="main">
+  <view class="categroy-left">
+    <view wx:for="{{category}}" wx:key="index" data-id="{{item.id}}" data-index="{{index}}" bindtap="switchTab" class="cate-list {{curIndex === index?'on':''}}">{{item.name}}</view>
+  </view>
+
+  <scroll-view class="categroy-right" scroll-y="{{isScroll}}" scroll-into-view="{{toView}}" scroll-with-animation="true">
+    <block wx:for="{{detail}}" wx:for-index wx:key="idx">
+      <view id="{{item.dbCategory.cat_type}}" class="cate-box">
+        <view class="cate-banner">
+          <image src="http://127.0.0.1:8080/images/jiupinmi/main.jpg">{{item.dbCategory.cat_banner}}</image>
+        </view>
+        <view class="cate-title">
+          <text>{{item.dbCategory.cat_name}}{{item.dbCategory.cat_banner}}</text>
+          <!-- <text>{{item.dbGoods[1].goodName}}</text> -->
+        </view>
+        <view class="product">
+          <view class="product-list" wx:for="{{item.dbGoods}}" wx:key="index" wx:for-item="val">
+            <navigator url="../details/details?good_id={{val.good_id}}&good_name={{val.good_name}}&good_main_url={{val.good_main_url}}&good_price={{val.good_price}}&good_detail_urls={{val.good_detail_urls}}">
+              <image class="test" src="{{val.good_main_url}}"></image>
+              <view class="classname">
+                <text>{{val.good_name[0]}}</text>
+                <text>{{val.good_name[1]}}</text>
+                <text>{{val.good_name[2]}}</text>
+                <text>{{val.good_name[3]}}</text>
+                <text>{{val.good_name[4]}}</text>
+                <text>{{val.good_name[5]}}</text>
+                <text>{{val.good_name[6]}}</text>
+                <text>{{val.good_name[7]}}</text>
+                <text>{{val.good_name[8]}}</text>
+                <text>{{val.good_name[9]}}</text>
+                <text>{{val.good_name[10]}}</text> ...
+              </view>
+            </navigator>
+          </view>
+        </view>
+      </view>
+    </block>
+  </scroll-view>
+
+</view>
