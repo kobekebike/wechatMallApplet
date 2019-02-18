@@ -26,37 +26,22 @@
   -->
    <view class="selected">
     <view class="select-title">
-      <input placeholder="       请输入商品名称或编号" auto-focus /> 
+      <input placeholder="请输入商品名称或编号" auto-focus /> 
     </view>
    </view> 
   <view class="newest">
      <!--<view class="newest-title">
       <text>商品中心</text>
-    </view>
-    必须要两个分别奇偶纪录才会呈现左右效果  -->
+    </view>-->
     <view class="newest-box">
-      <view wx:for="{{odd_goods}}" wx:key="{{index}}" wx: class="newest-list">
-        <navigator url="details/details?good_id={{item.good_id}}&good_name={{item.good_name}}&good_main_url={{item.good_main_url}}&good_price={{item.good_price}}&good_detail_urls={{item.good_detail_urls}}">
-          <image src="{{item.good_main_url}}"></image>
+      <view wx:for="{{productGoods}}" wx:key="{{index}}" wx: class="newest-list">
+        <navigator url="details/details?productDetail={{item.productDetail}}&productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}">
+          <image src="{{item.productFilePath}}"></image>
           <view class="newest-text">
-            <text>{{item.good_name[1]}}</text>
-            <text>{{item.good_name[2]}}</text>
-            <text>{{item.good_name[3]}}</text>
-            <text>{{item.good_name[4]}}</text>
-            <text>{{item.good_name[5]}}</text>
-            <text>{{item.good_name[6]}}</text>
-            <text>{{item.good_name[7]}}</text>
-            <text>{{item.good_name[8]}}</text>
-            <text>{{item.good_name[9]}}</text>
-            <text>{{item.good_name[10]}}</text>
-            <text>{{item.good_name[11]}}</text>
-            <text>{{item.good_name[12]}}</text>
-            <text>{{item.good_name[13]}}</text>
-            <text>{{item.good_name[14]}}</text>
-            <text>{{item.good_name[15]}}</text> ...
+            <text>{{item.productTitle}}</text>
           </view>
           <view class="newest-text-price">
-            <text>￥ {{item.good_price}}</text> 加入购物车
+            <text>￥ {{item.productPrice}}</text> 加入购物车{{item.productDetail}}
           </view>
         </navigator>
       </view>

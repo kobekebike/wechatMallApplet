@@ -10,6 +10,7 @@ Page({
     odd_goods: ["nae", "john"],
     even_goods: [],
     title_goods:[],
+    productGoods:[],
     new_even: "jjfdsafsdafsdafasf",
     interval: 3000,
     duration: 800,
@@ -21,30 +22,39 @@ Page({
       //new_even: "aabybccddeeffgghhii".substr(3,6)       
     })
     var self = this;
+    // wx.request({
+    //   url: 'http://localhost:8080/yMybatis/good/get_all_odd',
+    //   success(res) {
+    //     self.setData({
+    //       odd_goods: res.data,
+    //       //new_even:res.data[2].goodName.substr(3,6)//good      
+    //     });
+    //   }
+    // });
+    // wx.request({
+    //   url: 'http://localhost:8080/yMybatis/good/get_all_even',
+    //   success(res) {
+    //     self.setData({
+    //       even_goods: res.data,
+    //     });
+    //   },
+    // });
+    // wx.request({
+    //   url: 'http://localhost:8080/yMybatis/good/get_title',
+    //   success(res) {
+    //     self.setData({
+    //       title_goods: res.data,
+    //     });
+    //   },
+    // });
+    //获取商品列表 yjf
     wx.request({
-      url: 'http://localhost:8080/yMybatis/good/get_all_odd',
+      url: 'http://localhost:8080/productController/getProductListByCriteria.do?page=1&rows=20',
       success(res) {
         self.setData({
-          odd_goods: res.data,
-          //new_even:res.data[2].goodName.substr(3,6)//good      
+          productGoods: res.data.data,
         });
       }
-    });
-    wx.request({
-      url: 'http://localhost:8080/yMybatis/good/get_all_even',
-      success(res) {
-        self.setData({
-          even_goods: res.data,
-        });
-      },
-    });
-    wx.request({
-      url: 'http://localhost:8080/yMybatis/good/get_title',
-      success(res) {
-        self.setData({
-          title_goods: res.data,
-        });
-      },
     });
   },
 
