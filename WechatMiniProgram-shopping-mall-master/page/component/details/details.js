@@ -7,11 +7,15 @@ var WxParse = require('../../utils/wxParse/wxParse.js');
 
 Page({
   data: {
-    product: {//前端调用貌似不需要加，但网络请求调用的时候要加
-      productTitle: '',
+    goods: {//前端调用貌似不需要加，但网络请求调用的时候要加
+      productId: 0,//id没用到
+      productDetail: 'origin',
       productPrice: '',
+      productTitle: '',
+      productType: '',
       productFilePath:'',
-      productDetail:''
+      productDescribe: '',
+      service: '如果有质量问题请联系客户人员。欢迎下次光临！'
     },
     num: 1,
     totalNum: 0,
@@ -24,9 +28,13 @@ Page({
   //获取从首页或购物车传过来的数据,这样就可以取出json数组中里面的字符串再放到一个数组中，解决了首页就处理数组字符串的问题
   onLoad: function (options) {
     this.setData({
+      productId: options.productId,
       productTitle: options.productTitle,
       productPrice: options.productPrice,
-      productFilePath: options.productFilePath
+      productType: options.productType,
+      productDetail: options.productDetail,
+      productFilePath: options.productFilePath,
+      productDescribe:options.productDescribe,
     })
     var self = this;
     wx.request({
@@ -42,9 +50,9 @@ Page({
     });
   },
   click: function (e) {//点击‘添加到购物车按钮’：网络请求向数据库中存入购物车信息  
-    var model = this.data.goodName;
+    var model = this.data.productTitle;
     wx.request({
-      url: "http://localhost:8080/yMybatis/cart/add?goodId="+this.data.goodId+"&goodName="+this.data.goodName+"&goodPrice="+this.data.goodPrice+"&goodMainUrl="+this.data.goodMainUrl+"&goodDetailUrls="+this.data.goodDetailUrls,
+      url: "http://localhost:8080/yijifu/cart/add?productId=" + this.data.productId + "&productTitle=" + this.data.productTitle + "&productPrice=" + this.data.productPrice + "&productType=" + this.data.productType + "&productDetail=" + this.data.productDetail,
     });   
 
     wx.showToast({

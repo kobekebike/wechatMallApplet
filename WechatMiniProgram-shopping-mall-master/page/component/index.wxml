@@ -33,11 +33,10 @@
   <view class="newest">
      <!--<view class="newest-title">
       <text>商品中心</text>
-    </view>
-    必须要两个分别奇偶纪录才会呈现左右效果  -->
+    </view>-->
     <view class="newest-box">
       <view wx:for="{{odd_goods}}" wx:key="{{index}}" wx: class="newest-list">
-        <navigator url="details/details?productId={{item.productId}}&productTitle={{item.productTitle}}&productPrice={{filters.toFix(item.productPrice)}}&productFilePath={{item.productFilePath}}">
+        <navigator url="details/details?productDetail={{item.productDetail}}&productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}">
           <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
           <view class="newest-text">
             <text>{{item.productTitle[0]}}</text>

@@ -20,10 +20,10 @@
     <view class="goods-content">
 
       <view wx:if="{{curIndex === 0}}">
-        <template is="wxParse" data="{{wxParseData:article.nodes}}"/>
+        <view>{{productDetail}}<rich-text nodes="{{productDetail}}"></rich-text></view>
       </view>
 
-      <view wx:if="{{curIndex === 1}}">{{goods.parameter}}</view>
+      <view wx:if="{{curIndex === 1}}">{{productDescribe}}</view>
       <view wx:if="{{curIndex === 2}}">{{goods.service}}</view>
     </view>
   </view>
