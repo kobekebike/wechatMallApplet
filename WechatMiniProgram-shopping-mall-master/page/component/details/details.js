@@ -1,4 +1,10 @@
-// page/component/details/details.js
+//获取应用实例
+const app = getApp();
+const headUrl = app.globalData.headUrl;
+const imageHeadUrl = app.globalData.imageHeadUrl;
+
+var WxParse = require('../../utils/wxParse/wxParse.js');
+
 Page({
   data: {
     goods: {//前端调用貌似不需要加，但网络请求调用的时候要加
@@ -16,10 +22,9 @@ Page({
     hasCarts: false,
     curIndex: 0,
     show: false,
-    scaleCart: false
+    scaleCart: false,
+    imageHeadUrl: imageHeadUrl
   },
-
-
   //获取从首页或购物车传过来的数据,这样就可以取出json数组中里面的字符串再放到一个数组中，解决了首页就处理数组字符串的问题
   onLoad: function (options) {
     this.setData({
@@ -31,8 +36,19 @@ Page({
       productFilePath: options.productFilePath,
       productDescribe:options.productDescribe,
     })
+    var self = this;
+    wx.request({
+      url: headUrl + '/productController/getProductDetail.do?method=doWx&productId=' + options.productId,
+      success(res) {
+        if (res.data.code == "0") {
+          WxParse.wxParse('article', 'html', res.data.data, self, 5);
+          self.setData({
+            productDetail:res.data.data
+          });
+        }
+      }
+    });
   },
-
   click: function (e) {//点击‘添加到购物车按钮’：网络请求向数据库中存入购物车信息  
     var model = this.data.productTitle;
     wx.request({

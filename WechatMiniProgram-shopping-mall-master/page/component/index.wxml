@@ -1,3 +1,4 @@
+<wxs module="filters" src="../utils/filter.wxs"></wxs>
 <view class="main">
 <!--
   <view class="selected">
@@ -26,7 +27,7 @@
   -->
    <view class="selected">
     <view class="select-title">
-      <input placeholder="请输入商品名称或编号" auto-focus /> 
+      <input placeholder="       请输入商品名称或编号" auto-focus bindchange="search"/> 
     </view>
    </view> 
   <view class="newest">
@@ -34,14 +35,28 @@
       <text>商品中心</text>
     </view>-->
     <view class="newest-box">
-      <view wx:for="{{productGoods}}" wx:key="{{index}}" wx: class="newest-list">
+      <view wx:for="{{odd_goods}}" wx:key="{{index}}" wx: class="newest-list">
         <navigator url="details/details?productDetail={{item.productDetail}}&productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}">
-          <image src="{{item.productFilePath}}"></image>
+          <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
           <view class="newest-text">
-            <text>{{item.productTitle}}</text>
+            <text>{{item.productTitle[0]}}</text>
+            <text>{{item.productTitle[1]}}</text>
+            <text>{{item.productTitle[2]}}</text>
+            <text>{{item.productTitle[3]}}</text>
+            <text>{{item.productTitle[4]}}</text>
+            <text>{{item.productTitle[5]}}</text>
+            <text>{{item.productTitle[6]}}</text>
+            <text>{{item.productTitle[7]}}</text>
+            <text>{{item.productTitle[8]}}</text>
+            <text>{{item.productTitle[9]}}</text>
+            <text>{{item.productTitle[10]}}</text>
+            <text>{{item.productTitle[11]}}</text>
+            <text>{{item.productTitle[12]}}</text>
+            <text>{{item.productTitle[13]}}</text>
+            <text>{{item.productTitle[14]}}</text> ...
           </view>
           <view class="newest-text-price">
-            <text>￥ {{item.productPrice}}</text> 加入购物车{{item.productDetail}}
+            <text>￥ {{filters.toFix(item.productPrice)}}</text> 加入购物车
           </view>
         </navigator>
       </view>

@@ -10,7 +10,7 @@
       "page/component/list/list"
   ],
   "window": {
-    "navigationBarTextStyle": "#ffffff",
+    "navigationBarTextStyle": "white",
     "navigationBarTitleText": "亿吉芙商城",
     "navigationBarBackgroundColor": "#AB956D",
     "backgroundColor": "#4e798df1",
@@ -19,7 +19,7 @@
   "tabBar": {
     "color": "#b7b7b7",
     "selectedColor": "#AB956D",
-    "borderStyle": "#f5f5f5",
+    "borderStyle": "white",
     "backgroundColor": "#f5f5f5",
     "list": [{
       "pagePath": "page/component/index",

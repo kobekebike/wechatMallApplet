@@ -1,5 +1,5 @@
 @import '../../common/common.wxss';
-
+@import"../../utils/wxParse/wxParse.wxss";
 .goods-box{
     position: relative;
     padding: 40rpx 45rpx;
