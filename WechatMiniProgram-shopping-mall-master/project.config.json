@@ -9,9 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
-	"appid": "wx8e40617ccf9609a7",
+	"appid": "wx7bab9c6555c35f1b",
 	"projectname": "MealOrderSystem",
-	"miniprogramRoot": "./",
 	"condition": {
 		"search": {
 			"current": -1,

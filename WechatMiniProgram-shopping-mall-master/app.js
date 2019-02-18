@@ -9,6 +9,8 @@ App({
     console.log('App Hide')
   },
   globalData: {
-    hasLogin: false
+    hasLogin: false,
+    headUrl: "http://www.jfy.com",//全局地址头
+    imageHeadUrl: "http://image.jfy.com"//全局图片地址头
   }
 })
