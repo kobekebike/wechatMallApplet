@@ -56,12 +56,10 @@ swiper-item image {
     font-size: 32rpx;
     color: #ff7800
 }
-.goods-cart-img{
-    position: absolute;
-    right: 50rpx;
-    top: 28rpx;
+.newest-box .newest-list .goods-cart-img{
     width: 45rpx;
     height: 45rpx;
+    margin: 0rpx 0rpx 0rpx 20rpx;
 }
 .to-carts-icon{
     right: 70rpx;

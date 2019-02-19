@@ -3,8 +3,6 @@ const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
 
-var WxParse = require('../../utils/wxParse/wxParse.js');
-
 Page({
   data: {
     goods: {//前端调用貌似不需要加，但网络请求调用的时候要加
@@ -41,9 +39,8 @@ Page({
       url: headUrl + '/productController/getProductDetail.do?method=doWx&productId=' + options.productId,
       success(res) {
         if (res.data.code == "0") {
-          WxParse.wxParse('article', 'html', res.data.data, self, 5);
           self.setData({
-            productDetail:res.data.data
+            productDetail: res.data.data.replace(/\<img/gi, '<img style="max-width:100%;height:auto" ')
           });
         }
       }

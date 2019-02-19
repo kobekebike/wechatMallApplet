@@ -1,4 +1,3 @@
-<import src="../../utils/wxParse/wxParse.wxml"/>
 <view class="main">
   <view class="goods-box">
     <image src="{{imageHeadUrl}}{{productFilePath}}" class="goods-thumb"></image>
@@ -20,7 +19,7 @@
     <view class="goods-content">
 
       <view wx:if="{{curIndex === 0}}">
-        <view>{{productDetail}}<rich-text nodes="{{productDetail}}"></rich-text></view>
+        <view><rich-text nodes="{{productDetail}}"></rich-text></view>
       </view>
 
       <view wx:if="{{curIndex === 1}}">{{productDescribe}}</view>

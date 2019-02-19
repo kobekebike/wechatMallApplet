@@ -90,5 +90,8 @@ Page({
         }
       }
     });
+  },
+  addToCart:function(e){
+    console.log(e.currentTarget.dataset.productid)
   }
 })
