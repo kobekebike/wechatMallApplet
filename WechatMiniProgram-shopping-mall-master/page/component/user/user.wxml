@@ -1,3 +1,4 @@
+<wxs module="filters" src="../../utils/filter.wxs"></wxs>
 <view class="main">
     <view class="header">
         <image src="{{thumb}}" class="thumb"></image>
@@ -6,27 +7,30 @@
     </view>
     <view class="address-box">
         <view class="address-manage">
-            <navigator url="/page/component/address/address">地址管理</navigator>
+            <navigator url="/page/component/address/address?address={{addressJSONstr}}">地址管理</navigator>
         </view>
         <view wx:if="{{hasAddress}}" class="address-list">
-            <view>{{address.name}}</view>
+            <view>{{address.addressee}}</view>
             <view>{{address.phone}}</view>
-            <view>{{address.detail}}</view>
+            <view>{{address.detailAddress}}</view>
         </view>
     </view>
     <view class="orders-box">
         <view class="orders">我的订单</view>
         <view class="orders-list" wx:for="{{orders}}" wx:key="index">
-            <view class="orders-number">订单编号：{{item.number}}</view>
+            <view class="orders-number">订单编号：{{item.orderNum}}</view>
             <view class="orders-detail">
-                <image src="{{item.goodMainUrl}}"></image>
-                <view class="">{{item.goodName}}</view>
-                <view class="">{{item.goodNum}}</view>
-                <text class="orders-status">{{item.status}}</text>
+                <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+                <view class="">{{filters.toSub(item.productTitle)}}</view>
+                <view class="">×{{item.productNum}}</view>
+                <text class="orders-status" wx:if="{{item.orderStatus==1}}">付款中</text>
+                <text class="orders-status" wx:if="{{item.orderStatus==2}}">已付款</text>
+                <text class="orders-status" wx:if="{{item.orderStatus==3}}">已发货</text>
+                <text class="orders-status" wx:if="{{item.orderStatus==4}}">取消</text>
             </view>
             <view class="orders-footer">
-                <text>实付：￥{{item.goodPrice}}</text>
-                <button size="mini" class="orders-btn" bindtap="payOrders">付款</button>
+                <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
+                <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders">付款</button>
             </view>
         </view>
     </view>

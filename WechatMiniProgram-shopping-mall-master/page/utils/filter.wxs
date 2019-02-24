@@ -3,6 +3,19 @@ var filters = {
     return value.toFixed(2);
   }
 }
+var sub = {
+  substr:function(value){
+    if(value.length == 0 || value == undefined){
+      return;
+    }
+    if(value.length > 15){
+      return value.substring(0, 14) + "...";
+    }else{
+      return value;
+    }
+  }
+}
 module.exports={
-  toFix: filters.toFix
+  toFix: filters.toFix,
+  toSub: sub.substr
 }

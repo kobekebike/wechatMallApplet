@@ -6,7 +6,7 @@
       <text class="goods-operation-add" bindtap="addCount">+</text> -->
       <view> 
       <text class="goods-to-cart" bindtap="click">加入购物车</text>
-      <image src="/image/cart1.png" class="goods-cart-img" bindtap="addToCart"></image>
+      <image src="/page/component/image/cart1.png" class="goods-cart-img" bindtap="click"></image>
       </view>
     </view>
     <view class="goods-title">{{productTitle}}</view>

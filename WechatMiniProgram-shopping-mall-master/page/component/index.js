@@ -2,6 +2,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
+const userId = app.globalData.userId;
 Page({
   data: {
     imgUrls: [
@@ -92,6 +93,30 @@ Page({
     });
   },
   addToCart:function(e){
-    console.log(e.currentTarget.dataset.productid)
+    wx.request({
+      url: headUrl + "/mallOrderController/saveMallOrder.do?method=doWx&productId=" + e.currentTarget.dataset.productid + "&productNum=1&userId=" + userId + "&orderStatus=1&orderAmount=" + e.currentTarget.dataset.price,
+      header: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      method: "POST",
+      success(res) {
+        if (res.data.code == "0") {
+          wx.showToast({
+            title: '已添加到购物车',
+            icon: 'success',
+            duration: 2000,
+            mask: true//防止触摸穿透
+          })
+        }else{
+          wx.showToast({
+            title: '添加失败',
+            icon: 'loading',
+            image: 'image/error.png',
+            duration: 2000,
+            mask: true//防止触摸穿透
+          })
+        }
+      }
+    });
   }
 })

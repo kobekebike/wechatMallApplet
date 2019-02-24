@@ -1,40 +1,51 @@
 // page/component/orders/orders.js
+const app = getApp();
+const headUrl = app.globalData.headUrl;
+const imageHeadUrl = app.globalData.imageHeadUrl;
+const userId = app.globalData.userId;
+
 Page({
   data: {
     address: {},
     hasAddress: false,
     total: 0,
     orders: [],
-    ma: "happy"
+    ma: "happy",
+    imageHeadUrl: imageHeadUrl
   },
 
   //从服务器获取订单数据,onShow比onReady先执行
-  onLoad() {
-    var self=this;
-    setTimeout(function () {//用延迟执行的方式避免因为事务冲突得到刚刚删除空的数据库而得不到数据
-      wx.request({
-        url: 'http://localhost:8080/yMybatis/order/get_all',
-        success(res) {          
-          console.log(self.data.ma)
-          console.log(res.data)
-          self.setData({
-            orders: res.data
-          })
-          self.getTotalPrice();
-        }
-      });
-    }, 2000)
+  onLoad(e) {
+    this.setData({
+      orders: JSON.parse(e.orders)
+    })
+    this.getTotalPrice();
   },
 
   onShow: function () {
     const self = this;
-    wx.getStorage({
-      key: 'address',
+    // wx.getStorage({
+    //   key: 'address',
+    //   success(res) {
+    //     self.setData({
+    //       address: res.data,
+    //       hasAddress: true
+    //     })
+    //   }
+    // });
+
+    wx.request({
+      url: headUrl + '/addressController/getAddressListByUserId.do?method=doWx&userId=' + userId + '&isDefault=true',
       success(res) {
-        self.setData({
-          address: res.data,
-          hasAddress: true
-        })
+        if (res.data.code == "0") {
+          console.log(res.data.data)
+          if (res.data.data.length > 0 && res.data.data[0] != null){
+            self.setData({
+              address: res.data.data[0],
+              hasAddress: true
+            });
+          }
+        }
       }
     });
   },
@@ -46,11 +57,10 @@ Page({
     let orders = this.data.orders;
     let total = 0;
     for (let i = 0; i < orders.length; i++) {
-      total += orders[i].goodNum * orders[i].goodPrice;
+      total += orders[i].productNum * orders[i].productPrice;
     }
-    console.log("金额" + total)
     this.setData({
-      total: total
+      total: total.toFixed(2)
     })
   },
 
@@ -64,6 +74,11 @@ Page({
           url: '/page/component/user/user'
         })
       }
+    })
+  },
+  updateAddressInfo: function(){
+    wx.navigateTo({
+      url: '../address/address?address=' + JSON.stringify(this.data.address)
     })
   }
 })

@@ -36,7 +36,7 @@
     </view>-->
     <view class="newest-box">
       <view wx:for="{{odd_goods}}" wx:key="{{index}}" wx: class="newest-list">
-        <navigator url="details/details?productDetail={{item.productDetail}}&productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+        <navigator url="details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
           <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
           <view class="newest-text">
             <text>{{item.productTitle[0]}}</text>
@@ -57,7 +57,7 @@
           </view>
           <view class="newest-text-price">
             <text>￥ {{filters.toFix(item.productPrice)}}</text>
-            <image src="/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}'></image>
+            <image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image>
           </view>
         </navigator>
       </view>

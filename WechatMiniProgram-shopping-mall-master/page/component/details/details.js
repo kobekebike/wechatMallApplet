@@ -2,11 +2,11 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-
+const userId = app.globalData.userId;
 Page({
   data: {
     goods: {//前端调用貌似不需要加，但网络请求调用的时候要加
-      productId: 0,//id没用到
+      productId: 0,
       productDetail: 'origin',
       productPrice: '',
       productTitle: '',
@@ -49,8 +49,12 @@ Page({
   click: function (e) {//点击‘添加到购物车按钮’：网络请求向数据库中存入购物车信息  
     var model = this.data.productTitle;
     wx.request({
-      url: "http://localhost:8080/yijifu/cart/add?productId=" + this.data.productId + "&productTitle=" + this.data.productTitle + "&productPrice=" + this.data.productPrice + "&productType=" + this.data.productType + "&productDetail=" + this.data.productDetail,
-    });   
+      url: headUrl + "/mallOrderController/saveMallOrder.do?method=doWx&productId=" + this.data.productId + "&productNum=1&userId=" + userId + "&orderStatus=1&orderAmount=" + this.data.productPrice,
+      header: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
+      method: "POST"
+    }); 
 
     wx.showToast({
       title: '已添加到购物车',
