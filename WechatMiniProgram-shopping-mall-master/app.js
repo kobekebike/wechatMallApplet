@@ -6,7 +6,7 @@ App({
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         this.globalData.loginCode = res.code
         wx.request({
-          url: this.globalData.headUrl + '/wxInterfaceController/getWxLoginInfo.do?method=doWx&code=' + this.globalData.loginCode,
+          url: this.globalData.headUrl + '/wxInterfaceController/getWxLoginInfo.do?method=doWx&code=' +                this.globalData.loginCode,
           success(res) {
           }
         })

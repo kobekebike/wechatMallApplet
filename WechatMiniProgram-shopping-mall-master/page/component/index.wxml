@@ -1,4 +1,4 @@
-<wxs module="filters" src="../utils/filter.wxs"></wxs>
+<wxs module="utils" src="../utils/filter.wxs"></wxs>
 <view class="main">
 <!--
   <view class="selected">
@@ -39,24 +39,10 @@
         <navigator url="details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
           <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
           <view class="newest-text">
-            <text>{{item.productTitle[0]}}</text>
-            <text>{{item.productTitle[1]}}</text>
-            <text>{{item.productTitle[2]}}</text>
-            <text>{{item.productTitle[3]}}</text>
-            <text>{{item.productTitle[4]}}</text>
-            <text>{{item.productTitle[5]}}</text>
-            <text>{{item.productTitle[6]}}</text>
-            <text>{{item.productTitle[7]}}</text>
-            <text>{{item.productTitle[8]}}</text>
-            <text>{{item.productTitle[9]}}</text>
-            <text>{{item.productTitle[10]}}</text>
-            <text>{{item.productTitle[11]}}</text>
-            <text>{{item.productTitle[12]}}</text>
-            <text>{{item.productTitle[13]}}</text>
-            <text>{{item.productTitle[14]}}</text> ...
+            <text>{{utils.toSub(item.productTitle)}}</text>
           </view>
           <view class="newest-text-price">
-            <text>￥ {{filters.toFix(item.productPrice)}}</text>
+            <text>￥ {{utils.toFix(item.productPrice)}}</text>
             <image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image>
           </view>
         </navigator>

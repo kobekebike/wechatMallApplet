@@ -3,19 +3,19 @@
   <view wx:if="{{hasList}}">
     <view class="cart-box">
       <view class="cart-list" wx:for="{{carts}}" wx:key="{{index}}">
-        <icon wx:if="{{item.selected}}" type="success" color="red" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
+        <icon wx:if="{{item.selected}}" type="success" color="#AB956D" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
         <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
         <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
           <image class="cart-thumb" src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
         </navigator>
         <text class="cart-pro-name">{{item.productTitle}}</text>
         <text class="cart-pro-price">￥{{filters.toFix(item.productPrice)}}</text>
-        <view class="cart-count-box">
-          <text class="cart-count-down" bindtap="minusCount" data-index="{{index}}" data-orderid='{{item.orderId}}' data-price='{{item.productPrice}}'>-</text>
-          <text class="cart-count-num">{{item.productNum}}</text>
-          <text class="cart-count-add" bindtap="addCount" data-index="{{index}}" data-orderid='{{item.orderId}}' data-price='{{item.productPrice}}'>+</text>
+        <view class="cart-count-box spe-lst">
+          <text class="add-btn spec-btn" bindtap="minusCount" data-index="{{index}}" data-orderid='{{item.orderId}}' data-price='{{item.productPrice}}'>-</text>
+          <input class="num-ipnut" type="number" value="{{item.productNum}}"></input>
+          <text class="cut-btn spec-btn" bindtap="addCount" data-index="{{index}}" data-orderid='{{item.orderId}}' data-price='{{item.productPrice}}'>+</text>
         </view>
-        <text class="cart-del" bindtap="deleteList" data-index="{{index}}" data-orderid='{{item.orderId}}'>×</text>
+        <text class="cart-del" bindtap="deleteList" data-index="{{index}}" data-orderid='{{item.orderId}}'>删除</text>
       </view>
     </view>
 

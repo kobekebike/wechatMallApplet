@@ -62,11 +62,12 @@
     position: absolute;
     right: 20rpx;
     bottom: 20rpx;
-    width: 80rpx;
+    width: 120rpx;
     height: 80rpx;
     line-height: 80rpx;
     text-align: center;
-    font-size: 44rpx;
+    font-size: 34rpx;
+    color: red;
 }
 .cart-footer{
     position: fixed;
@@ -108,4 +109,48 @@
     padding:40rpx 0;
     color: #999;
     text-align: center;
+}
+
+.add-btn,.cut-btn {
+    background-color: #eeeeee;
+}
+.spec-btn{
+    font-size: 10pt;
+    background-color: white;
+    margin: 0;
+    margin-right:10rpx; 
+    border:1rpx solid #35B6DD;
+    border-radius: 0;
+     width: 50rpx;
+}
+.num-ipnut {
+    background-color: white;
+    border:1rpx solid #35B6DD;
+    width: 100rpx;
+    font-size:12pt;
+    margin-right:10rpx; 
+    padding: 5rpx;
+    text-align: center;
+    height: 1.8em;
+}
+.spe-lst{
+    float: left;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    width:580rpx;
+
+}
+.sect-title{
+    float: left;
+    font-size:12pt;
+    display:inline-block;
+    margin-right:15rpx; 
+    line-height: 2;
+}
+.pro-section{
+    position: relative;
+    padding: 20rpx 40rpx;
+    overflow: hidden;
+    border-top: 1rpx #cccccc solid;
 }
