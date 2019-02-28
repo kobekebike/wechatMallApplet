@@ -26,7 +26,7 @@ App({
               // 可以将 res 发送给后台解码出 unionId
               console.log(res)
               wx.request({
-                url: this.globalData.headUrl + '/wxInterfaceController/decodeUserInfo.do?method=doWx',
+                url: this.globalData.headUrl + '/wxInterfaceController/decodeUserInfo.do?method=doWx&code=' + this.globalData.loginCode,
                 data: res,
                 header: {
                   'Content-Type': 'application/json'

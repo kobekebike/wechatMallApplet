@@ -7,7 +7,7 @@ Page({
   data: {
     goods: {//前端调用貌似不需要加，但网络请求调用的时候要加
       productId: 0,
-      productDetail: 'origin',
+      productDetail: '',
       productPrice: '',
       productTitle: '',
       productType: '',
@@ -30,7 +30,6 @@ Page({
       productTitle: options.productTitle,
       productPrice: options.productPrice,
       productType: options.productType,
-      productDetail: options.productDetail,
       productFilePath: options.productFilePath,
       productDescribe:options.productDescribe,
     })
