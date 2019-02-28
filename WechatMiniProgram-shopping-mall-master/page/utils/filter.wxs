@@ -8,14 +8,14 @@ var sub = {
     if(value.length == 0 || value == undefined){
       return;
     }
-    if(value.length > 15){
-      return value.substring(0, 14) + "...";
+    if(value.length > 10){
+      return value.substring(0, 9) + "...";
     }else{
       return value;
     }
   }
 }
 module.exports={
-  toFix: filters.toFix,
-  toSub: sub.substr
+  toSub: sub.substr,
+  toFix: filters.toFix
 }
