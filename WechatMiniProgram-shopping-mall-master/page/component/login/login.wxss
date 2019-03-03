@@ -1,4 +1,3 @@
-/* page/component/login/login.wxss */
 .container{
   background-color: #AB956D;
 }

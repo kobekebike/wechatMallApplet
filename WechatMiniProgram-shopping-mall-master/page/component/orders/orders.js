@@ -20,26 +20,13 @@ Page({
       orders: JSON.parse(e.orders)
     })
     this.getTotalPrice();
-  },
-
-  onShow: function () {
     const self = this;
-    // wx.getStorage({
-    //   key: 'address',
-    //   success(res) {
-    //     self.setData({
-    //       address: res.data,
-    //       hasAddress: true
-    //     })
-    //   }
-    // });
-
     wx.request({
       url: headUrl + '/addressController/getAddressListByUserId.do?method=doWx&userId=' + userId + '&isDefault=true',
       success(res) {
         if (res.data.code == "0") {
           console.log(res.data.data)
-          if (res.data.data.length > 0 && res.data.data[0] != null){
+          if (res.data.data.length > 0 && res.data.data[0] != null) {
             self.setData({
               address: res.data.data[0],
               hasAddress: true
@@ -48,6 +35,9 @@ Page({
         }
       }
     });
+  },
+
+  onShow: function () {
   },
 
   /**
@@ -78,7 +68,7 @@ Page({
   },
   updateAddressInfo: function(){
     wx.navigateTo({
-      url: '../address/address?address=' + JSON.stringify(this.data.address)
+      url: '../address/list/list?isSelect=true'
     })
   }
 })

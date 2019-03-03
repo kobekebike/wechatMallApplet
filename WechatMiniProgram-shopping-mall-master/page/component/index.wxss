@@ -1,4 +1,4 @@
-@import '../common/common.wxss';
+@import '../common/styles/common.wxss';
 swiper {
     height: 421.5rpx;
 }

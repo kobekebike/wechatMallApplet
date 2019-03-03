@@ -1,4 +1,4 @@
-@import '../../common/common.wxss';
+@import '../../common/styles/common.wxss';
 
 .cart-box{
     padding-bottom: 100rpx;

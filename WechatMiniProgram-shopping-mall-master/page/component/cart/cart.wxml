@@ -1,3 +1,4 @@
+<import src="../../common/pageTemplate/prompt.wxml"/>
 <wxs module="filters" src="../../utils/filter.wxs"></wxs>
 <view class="main">
   <view wx:if="{{hasList}}">
@@ -24,7 +25,7 @@
       <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll" />
       <view class="order-icon">
         <view bindtap="selectOrderData">
-          <image src="/page/component/image/images/icon3.png"></image>
+          <image src="/page/component/image/icon3.png"></image>
         </view>
       </view>
       <text>全选</text>
@@ -32,6 +33,7 @@
     </view>
   </view>
   <view wx:else>
-    <view class="cart-no-data">购物车是空的哦~</view>
+    <!-- <view class="cart-no-data">购物车是空的哦~</view> -->
+    <template is="prompt" data="{{ prompt }}"/>
   </view>
 </view>

@@ -1,3 +1,4 @@
+<import src="../../common/pageTemplate/prompt.wxml"/>
 <wxs module="filters" src="../../utils/filter.wxs"></wxs>
 <view class="main">
     <view class="header">
@@ -7,12 +8,7 @@
     </view>
     <view class="address-box">
         <view class="address-manage">
-            <navigator url="/page/component/address/address?address={{addressJSONstr}}">地址管理</navigator>
-        </view>
-        <view wx:if="{{hasAddress}}" class="address-list">
-            <view>{{address.addressee}}</view>
-            <view>{{address.phone}}</view>
-            <view>{{address.detailAddress}}</view>
+            <navigator url="/page/component/address/list/list?isSelect=false">地址管理</navigator>
         </view>
     </view>
     <view class="orders-box">
@@ -33,5 +29,6 @@
                 <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders">付款</button>
             </view>
         </view>
+        <template is="prompt" data="{{ prompt }}"/>
     </view>
 </view>

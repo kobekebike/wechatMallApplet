@@ -1,0 +1,23 @@
+<import src="../../../common/pageTemplate/prompt.wxml"/>
+<view class='address-list'>
+  <scroll-view scroll-y="true" class="tm" bindscrolltolower="lower">
+    <view class="m" wx:for="{{address}}" catchtap="selectAddress" catchlongpress="deleteAddress" id="{{index}}" wx:key="" data-addressid="{{item.addressId}}">
+        <view class="m-data">
+            <view class="m-data-left">
+                <label class="m-data-top-left">{{item.addressee}}</label>
+                <label class="m-data-top-right">{{item.phone}}<label wx:if="{{item.isDefault}}" class='m-data-top-right-default'>默认</label></label>
+            </view>
+            <view class="m-data-right">
+                <label class="m-data-bottom-left">{{item.detailAddress}}</label>
+            </view>
+            <view class='m-data-edit' catchtap="editAddress" data-addressdata="{{item}}">
+              <image class="icon" src="../../image/icon4.png"/>
+            </view>
+        </view>
+    </view>
+    <template is="prompt" data="{{ prompt }}"/>
+    <view class="btn-plus" bindtap="toAddressAdd">
+        <button class='add-address-btn'>+ 新增地址</button>
+    </view>
+  </scroll-view>
+</view>

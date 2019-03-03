@@ -45,8 +45,7 @@ Page({
       }
     });
   },
-  click: function (e) {//点击‘添加到购物车按钮’：网络请求向数据库中存入购物车信息  
-    var model = this.data.productTitle;
+  click: function (e) {
     wx.request({
       url: headUrl + "/mallOrderController/saveMallOrder.do?method=doWx&productId=" + this.data.productId + "&productNum=1&userId=" + userId + "&orderStatus=1&orderAmount=" + this.data.productPrice,
       header: {

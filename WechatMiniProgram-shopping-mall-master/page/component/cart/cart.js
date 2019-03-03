@@ -6,6 +6,12 @@ const userId = app.globalData.userId;
 
 Page({
   data: {
+    prompt: {
+      hidden: false,
+      icon: '../image/icon5.png',
+      title: '购物车是空的哦',
+      text: '暂时没有相关数据',
+    },
     carts: [],               // 购物车列表
     hasList: false,          // 列表是否有数据
     totalPrice: 0,           // 总价，初始为0

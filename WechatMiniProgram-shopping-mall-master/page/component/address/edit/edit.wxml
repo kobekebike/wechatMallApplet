@@ -1,0 +1,23 @@
+<view class="main">
+    <view class="form-box">
+        <form bindsubmit="formSubmit">
+            <view class='row-cls'><label class='row-lab'>*</label><input value="{{address.addressee}}" name="addressee" placeholder="姓名"/></view>
+            <view class='row-cls'><label class='row-lab'>*</label><input type="number" name="phone" value="{{address.phone}}" placeholder="电话号码"/></view>
+            <view class="region-box">
+              <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
+                  <view class="region-manage">
+                      <label class='row-lab'>*</label><label wx:if="{{province}}">所在地区</label><label wx:else>{{region[0]}} {{region[1]}} {{region[2]}}</label>
+                  </view>
+                </picker>
+            </view>
+            <view class='row-cls'><label class='row-lab'>*</label><input name="detailAddress" value="{{address.detailAddress}}" placeholder="详细地址"/></view>
+            <view class="default-box">
+                <view class="default-manage">
+                    <label class='default-left'>设为默认</label>
+                    <label class='default-right'><switch class='default-switch' checked="{{address.isDefault}}" name ='isDefault'/></label>
+                </view>
+            </view>
+            <button form-type="submit" type='warn'>保存</button>
+        </form>
+    </view>
+</view>

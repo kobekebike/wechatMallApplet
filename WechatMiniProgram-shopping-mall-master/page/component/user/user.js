@@ -6,12 +6,15 @@ const userId = app.globalData.userId;
 
 Page({
   data: {
+    prompt: {
+      hidden: true,
+      icon: '../image/icon5.png',
+      title: '还没有订单呢',
+      text: '暂时没有相关数据',
+    },
     thumb: '',
     nickname: '',
     orders: [],
-    hasAddress: false,
-    address: {},
-    addressJSONstr: '',
     imageHeadUrl: imageHeadUrl
   },
 
@@ -52,42 +55,21 @@ Page({
   },
   onShow() {
     var self = this;
-    /**
-     * 获取本地缓存 地址信息
-     */
-    // wx.getStorage({
-    //   key: 'address',
-    //   success: function (res) {
-    //     self.setData({
-    //       hasAddress: true,
-    //       address: res.data
-    //     })
-    //   }
-    // })
-    //地址信息
-    wx.request({
-      url: headUrl + '/addressController/getAddressListByUserId.do?method=doWx&userId=' + userId + '&isDefault=true',
-      success(res) {
-        if (res.data.code == "0") {
-          if (res.data.data.length > 0 && res.data.data[0] != null) {
-            self.setData({
-              address: res.data.data[0],
-              hasAddress: true,
-              addressJSONstr: JSON.stringify(res.data.data[0])
-            });
-          }
-        }
-      }
-    });
     //订单信息
     wx.request({
       url: headUrl + '/mallOrderController/getOrderByUserIdAndOrderStatus.do?method=doWx&userId=' + userId,
       success(res) {
         if (res.data.code == "0") {
           wx.hideToast();
-          self.setData({
-            orders: res.data.data
-          });
+          if (res.data.data.length > 0){
+            self.setData({
+              orders: res.data.data
+            });
+          } else {
+            self.setData({
+              ['prompt.hidden']: !self.data.prompt.hidden
+            })
+          }
         }
       }
     });
