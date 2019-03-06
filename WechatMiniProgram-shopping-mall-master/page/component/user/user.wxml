@@ -18,7 +18,9 @@
         <view class="orders-list" wx:for="{{orders}}" wx:key="index">
             <view class="orders-number">订单编号：{{item.orderNum}}</view>
             <view class="orders-detail">
-                <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+                  <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+                </navigator>
                 <view class="">{{filters.toSub(item.productTitle)}}</view>
                 <view class="">×{{item.productNum}}</view>
                 <text class="orders-status" wx:if="{{item.orderStatus==1}}">付款中</text>
