@@ -27,7 +27,7 @@
   -->
    <view class="selected">
     <view class="select-title">
-      <input placeholder="       请输入商品名称或编号" auto-focus bindchange="search"/> 
+      <input placeholder="请输入商品名称" auto-focus bindchange="search"/> 
     </view>
    </view> 
   <view class="newest">
@@ -42,7 +42,7 @@
             <text>{{utils.toSub(item.productTitle)}}</text>
           </view>
           <view class="newest-text-price">
-            <text>￥ {{utils.toFix(item.productPrice)}}</text>
+            <text>￥{{utils.toFix(item.productPrice)}} </text>
             <image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image>
           </view>
         </navigator>

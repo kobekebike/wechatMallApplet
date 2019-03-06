@@ -12,8 +12,7 @@ Page({
     ],
     indicatorDots: false,
     autoplay: false,
-    odd_goods: ["nae", "john"],
-    even_goods: [],
+    odd_goods: [],
     title_goods:[],
     productGoods:[],
     new_even: "jjfdsafsdafsdafasf",
@@ -31,23 +30,7 @@ Page({
       duration: 10000
     });
     var self = this;
-    // wx.request({
-    //   url: 'http://localhost:8080/yMybatis/good/get_all_odd',
-    //   success(res) {
-    //     self.setData({
-    //       odd_goods: res.data,
-    //       //new_even:res.data[2].goodName.substr(3,6)//good      
-    //     });
-    //   }
-    // });
-    // wx.request({
-    //   url: 'http://localhost:8080/yMybatis/good/get_all_even',
-    //   success(res) {
-    //     self.setData({
-    //       even_goods: res.data,
-    //     });
-    //   },
-    // });
+
     // wx.request({
     //   url: 'http://localhost:8080/yMybatis/good/get_title',
     //   success(res) {
@@ -71,6 +54,7 @@ Page({
     });
   },
   search: function (e) {
+    console.log(headUrl + '/productController/getProductListByCriteria.do?method=doWx&searchText=' + e.detail.value);
     wx.showToast({
       title: "加载中...",
       icon: "loading",

@@ -9,10 +9,10 @@ swiper-item image {
 
 .select-title,.newest-title{/**首页中的子标题的字体样式*/
     width: 100%;
-    padding:30rpx 0;
+    padding:30rpx 100rpx;
     height: 40rpx;
     color: #AB956D;
-    text-align: center;
+    text-align: left;
 }
 .select-top-small{
     width: 375rpx;
