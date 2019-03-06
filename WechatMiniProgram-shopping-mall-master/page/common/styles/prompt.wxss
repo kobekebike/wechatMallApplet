@@ -17,29 +17,13 @@
 }
 
 .prompt-message .prompt-title {
-    font-size: 16px;
+    font-size: 32rpx;
     font-weight: bold;
     color: #333;
     margin: 2px 0;
 }
 
 .prompt-message .prompt-text {
-    font-size: 12px;
+    font-size: 20rpx;
     margin: 2px 0;
-}
-
-.prompt-message .prompt-button-area .prompt-button {
-    font-size: 13px;
-    line-height: 2;
-}
-
-.prompt-message .prompt-button-area .prompt-button {
-    margin: 4px auto;
-    width: 100px;
-    padding: 2px 0;
-    border: 1px solid #eee;
-}
-
-.prompt-message .prompt-button-area .prompt-button:after {
-    display: none;
 }

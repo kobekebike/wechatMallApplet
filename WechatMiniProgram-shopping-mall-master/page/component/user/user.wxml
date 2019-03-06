@@ -1,10 +1,12 @@
 <import src="../../common/pageTemplate/prompt.wxml"/>
 <wxs module="filters" src="../../utils/filter.wxs"></wxs>
 <view class="main">
-    <view class="header">
-        <image src="{{thumb}}" class="thumb"></image>
-        <text class="nickname">{{nickname}}</text>
-        <text class="about">关于我们</text>
+    <view class="userinfo">
+      <button wx:if="{{!isAuth}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='userinfo-btn'>
+      <image class="userinfo-avatar" src="{{thumb}}" background-size="cover"></image>
+      </button>
+      <image wx:else class="userinfo-avatar" src="{{thumb}}" background-size="cover"></image>
+      <text class="userinfo-nickname">{{nickname}}</text>
     </view>
     <view class="address-box">
         <view class="address-manage">
@@ -26,7 +28,7 @@
             </view>
             <view class="orders-footer">
                 <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
-                <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders">付款</button>
+                <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders" data-orderinfo='{{item}}'>付款</button>
             </view>
         </view>
         <template is="prompt" data="{{ prompt }}"/>

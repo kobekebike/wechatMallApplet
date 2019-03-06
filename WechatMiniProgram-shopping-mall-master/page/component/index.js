@@ -2,7 +2,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 Page({
   data: {
     imgUrls: [
@@ -21,8 +21,10 @@ Page({
     duration: 800,
     imageHeadUrl: imageHeadUrl
   },
-
-  onReady() {//获取奇数商品详情    
+  onLoad(){
+    userId = getApp().globalData.userId;
+  },
+  onReady() {//获取奇数商品详情   
     wx.showToast({
       title: "加载中...",
       icon: "loading",

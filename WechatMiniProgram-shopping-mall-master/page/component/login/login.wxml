@@ -1,8 +1,0 @@
-<!--index.wxml-->
-<view class="container" wx:if="{{isShowLoginPage}}">
-  <view class="userinfo">
-    <image class="userinfo-avatar" src='../image/user-head.png'></image>
-    <view class='text-cla'>请登录后使用</view>
-    <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" class='btn-cla'> 立即登录 </button>
-  </view>
-</view>

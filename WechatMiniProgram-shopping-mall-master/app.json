@@ -1,6 +1,5 @@
 {
   "pages": [
-      "page/component/login/login",
       "page/component/index",
       "page/component/category/category",
       "page/component/cart/cart",

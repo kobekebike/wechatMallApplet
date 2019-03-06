@@ -1,7 +1,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 Page({
 
   /**
@@ -22,6 +22,7 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    userId = getApp().globalData.userId;
     this.setData({
       isSelect: options.isSelect
     })

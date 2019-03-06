@@ -5,9 +5,18 @@ App({
       success: res => {
         // 发送 res.code 到后台换取 openId, sessionKey, unionId
         this.globalData.loginCode = res.code
+        const that = this;
         wx.request({
           url: this.globalData.headUrl + '/wxInterfaceController/getWxLoginInfo.do?method=doWx&code=' + this.globalData.loginCode,
           success(res) {
+            if(res.data.code == "0"){
+              that.globalData.userId = res.data.data;
+              if (that.userIdReadyCallback) {
+                that.userIdReadyCallback(res.data.data)
+              }
+            }else{
+
+            }
           }
         })
       }
@@ -24,17 +33,17 @@ App({
           wx.getUserInfo({
             success: res => {
               // 可以将 res 发送给后台解码出 unionId
-              console.log(res)
-              wx.request({
-                url: this.globalData.headUrl + '/wxInterfaceController/decodeUserInfo.do?method=doWx&loginCode=' + this.globalData.loginCode,
-                data: res,
-                header: {
-                  'Content-Type': 'application/json'
-                },
-                method: "GET",
-                success(res){
-                }
-              })
+              // console.log(res)
+              // wx.request({
+              //   url: this.globalData.headUrl + '/wxInterfaceController/decodeUserInfo.do?method=doWx&loginCode=' + this.globalData.loginCode,
+              //   data: res,
+              //   header: {
+              //     'Content-Type': 'application/json'
+              //   },
+              //   method: "GET",
+              //   success(res){
+              //   }
+              // })
               
               this.globalData.userInfo = res.userInfo
 
@@ -57,6 +66,11 @@ App({
     app.userInfoReadyCallback = userInfo =>{
       if(userInfo){
         this.globalData.userInfo = userInfo
+      }
+    }
+    app.userIdReadyCallback = userId => {
+      if (userId) {
+        this.globalData.userId = userId
       }
     }
   },

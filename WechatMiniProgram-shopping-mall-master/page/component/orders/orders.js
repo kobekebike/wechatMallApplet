@@ -2,7 +2,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 
 Page({
   data: {
@@ -11,21 +11,23 @@ Page({
     total: 0,
     orders: [],
     ma: "happy",
-    imageHeadUrl: imageHeadUrl
+    imageHeadUrl: imageHeadUrl,
+    ip: ''
   },
 
   //从服务器获取订单数据,onShow比onReady先执行
   onLoad(e) {
+    userId = getApp().globalData.userId;
     this.setData({
       orders: JSON.parse(e.orders)
     })
     this.getTotalPrice();
     const self = this;
+    //获取地址信息
     wx.request({
       url: headUrl + '/addressController/getAddressListByUserId.do?method=doWx&userId=' + userId + '&isDefault=true',
       success(res) {
         if (res.data.code == "0") {
-          console.log(res.data.data)
           if (res.data.data.length > 0 && res.data.data[0] != null) {
             self.setData({
               address: res.data.data[0],
@@ -35,6 +37,17 @@ Page({
         }
       }
     });
+    //获取ip
+    wx.request({
+      url: 'https://pv.sohu.com/cityjson?ie=utf-8',
+      success: function (e) {
+        let arr = e.data.split(" = ");
+        let returnCitySN = JSON.parse(arr[1].replace(";", ""));
+        self.setData({
+          ip: returnCitySN.cip
+        })
+      }
+    })
   },
 
   onShow: function () {
@@ -55,14 +68,31 @@ Page({
   },
 
   toPay() {
-    wx.showModal({
-      title: '提示',
-      content: '本系统只做演示，支付系统已屏蔽',
-      text: 'center',
-      complete() {
-        wx.switchTab({
-          url: '/page/component/user/user'
-        })
+    wx.request({
+      url: headUrl + '/weChatPayController/weChatPay.do?method=doWx&userId=' + userId + '&cip=' + this.data.ip,
+      success: function (e) {
+        if(e.data.code == "0"){
+          console.log(e);
+          wx.requestPayment({
+            timeStamp: e.data.data.timeStamp,
+            nonceStr: e.data.data.nonceStr,
+            package: e.data.data.package,
+            signType: e.data.data.signType,
+            paySign: e.data.data.paySign,
+            success: function (res) {
+              console.log(e.data.data.package)
+              console.log(res)
+            },
+            fail: function (res) {
+              console.log(res)
+              wx.showModal({
+                title: '支付提示',
+                content: e.data.data.signType,
+                showCancel: false
+              })
+            }
+          })
+        }
       }
     })
   },

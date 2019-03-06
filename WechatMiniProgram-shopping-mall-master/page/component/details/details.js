@@ -2,7 +2,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 Page({
   data: {
     goods: {//前端调用貌似不需要加，但网络请求调用的时候要加
@@ -25,6 +25,7 @@ Page({
   },
   //获取从首页或购物车传过来的数据,这样就可以取出json数组中里面的字符串再放到一个数组中，解决了首页就处理数组字符串的问题
   onLoad: function (options) {
+    userId = getApp().globalData.userId;
     this.setData({
       productId: options.productId,
       productTitle: options.productTitle,

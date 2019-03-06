@@ -2,7 +2,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 
 Page({
   data: {
@@ -22,7 +22,9 @@ Page({
     model: '',
     imageHeadUrl: imageHeadUrl
   },
-
+  onLoad() {
+    userId = getApp().globalData.userId;
+  },
   onShow() {//网络请求从数据库中获取购物车信息,比onReady先执行，实时显示购物车状态   
     wx.showToast({
       title: "加载中...",

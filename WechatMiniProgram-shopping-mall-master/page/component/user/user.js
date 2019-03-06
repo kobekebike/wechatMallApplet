@@ -2,7 +2,7 @@
 const app = getApp();
 const headUrl = app.globalData.headUrl;
 const imageHeadUrl = app.globalData.imageHeadUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 
 Page({
   data: {
@@ -12,19 +12,24 @@ Page({
       title: '还没有订单呢',
       text: '暂时没有相关数据',
     },
-    thumb: '',
-    nickname: '',
+    thumb: '../image/user-head.png',
+    nickname: '点击头像登录',
+    isAuth: false,//是否授权头像信息
     orders: [],
     imageHeadUrl: imageHeadUrl
   },
 
   //（待做：自动刷新）
   onLoad() {
+    userId = getApp().globalData.userId;
     const userInfo = getApp().globalData.userInfo;
-    this.setData({
-      thumb: userInfo.avatarUrl,
-      nickname: userInfo.nickName
-    })
+    if (userInfo != null){
+      this.setData({
+        thumb: userInfo.avatarUrl,
+        nickname: userInfo.nickName,
+        isAuth: true
+      })
+    }
     // var self = this;
     /**
      * 获取用户信息
@@ -77,23 +82,17 @@ Page({
   /**
    * 发起支付请求
    */
-  payOrders() {
-    wx.requestPayment({
-      timeStamp: 'String1',
-      nonceStr: 'String2',
-      package: 'String3',
-      signType: 'MD5',
-      paySign: 'String4',
-      success: function (res) {
-        console.log(res)
-      },
-      fail: function (res) {
-        wx.showModal({
-          title: '支付提示',
-          content: '<text>',
-          showCancel: false
-        })
-      }
+  payOrders(e) {
+    wx.navigateTo({
+      url: '../orders/orders?orders=' + ("[" + JSON.stringify(e.currentTarget.dataset.orderinfo) + "]")
+    })
+  },
+  getUserInfo: function (e) {
+    let userInfo = e.detail.userInfo;
+    this.setData({
+      thumb: userInfo.avatarUrl,
+      nickname: userInfo.nickName,
+      isAuth: true
     })
   }
 })

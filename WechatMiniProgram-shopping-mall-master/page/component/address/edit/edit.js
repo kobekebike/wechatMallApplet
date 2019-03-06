@@ -1,7 +1,7 @@
 // page/component/new-pages/user/address/address.js
 const app = getApp();
 const headUrl = app.globalData.headUrl;
-const userId = app.globalData.userId;
+let userId = app.globalData.userId;
 
 Page({
   data:{
@@ -17,6 +17,7 @@ Page({
     isSaveOrUpdate: true //保存还是修改
   },
   onLoad(e){
+    userId = getApp().globalData.userId;
     if (e.address && e.address.length != 0){
       let addressArr = JSON.parse(e.address);
       this.setData({
