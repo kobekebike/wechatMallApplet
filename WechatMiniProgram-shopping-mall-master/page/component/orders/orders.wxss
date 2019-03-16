@@ -87,5 +87,5 @@
     width: 240rpx;
     text-align: center;
     color: #fff;
-    background: #AB956D;
+    background: #93d5cd;
 }

@@ -35,11 +35,11 @@ swiper-item image {
 .newest-box .newest-list{
     display: inline-block;
     width: 325rpx;
-    height: 440rpx;
+    height: 410rpx;
     margin:0 20rpx 20rpx 0;
     border-radius: 10px;
     text-align: center;
-    background: #f5f6f5;
+    background: #f2f8f8;
 }
 .newest-box .newest-list:nth-child(2n){
     margin-right: 0;
@@ -54,12 +54,13 @@ swiper-item image {
 }
 .newest-text-price{
     font-size: 32rpx;
-    color: #ff7800
+    color: #ff7800;
+    display:flex;
 }
 .newest-box .newest-list .goods-cart-img{
     width: 45rpx;
     height: 45rpx;
-    margin: 0rpx 0rpx 0rpx 20rpx;
+    margin: 0rpx 10rpx;
 }
 .to-carts-icon{
     right: 70rpx;
@@ -70,4 +71,92 @@ swiper-item image {
     opacity: .6;
     -webkit-animation: to_cart .3s ease-out;
     animation: to_cart .3s ease-out;
+}
+
+.cates {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: stretch;
+  padding-bottom: 20rpx;
+  background-color: #fafdfd;
+}
+.cates .cate {
+  width: 50%;
+  height: 170rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20rpx;
+}
+.cates .cate .img {
+  width: 70rpx;
+  height: 100rpx;
+}
+.cates .cate .name {
+  color: #93d5cd;
+  font-size: 20rpx;
+}
+.cates .cate .cate-hr{
+  width:50%;
+  border:1rpx solid #93d5cd;
+  margin-top:35rpx;
+}
+
+.cates .cate::before {
+    position: absolute;
+    top: 40rpx;
+    left: 50%;
+    width: 1px;
+    height: 50px;
+    content: "";
+    background: #93d5cd;
+}
+.goods-tab-nav{
+    display: inline-block;
+    width: 25%;
+    height: 90rpx;
+    line-height: 90rpx;
+    border-bottom: 1rpx solid #ededed;
+    box-sizing: border-box;
+    text-align: center;
+    color: #c7c7cb;
+}
+.goods-tab-nav.on{
+    color: #93d5cd;
+    border-bottom: 5rpx solid #93d5cd;
+}
+.goods-content{
+  padding-top:30rpx;
+}
+.cates .cate .cate-num{
+  position: absolute;
+	top: 27%;
+	left: 27.5%;
+	width: 20rpx;
+  height: 20rpx;
+  line-height:20rpx;
+  text-align:center;
+  -webkit-transform: translate3d(0, -50%, 0);
+  transform: translate3d(0, -50%, 0);
+  color:rgb(255, 55, 55);
+  font-size: 16rpx;
+  background-color: #fff;
+  border-radius: 50rpx;
+  border: 1rpx solid rgb(255, 55, 55);
+}
+.newest-text-price .newest-text-price-left{
+  padding-top:5rpx;
+  width:70%;
+}
+.newest-text-price .newest-text-price-right{
+  width:30%;
+  text-align:right;
+}
+.newest-text-price-left .newest-text-price-left-text{
+  font-size: 18rpx;
+  color: #65716f;
+  padding-left:10rpx;
 }

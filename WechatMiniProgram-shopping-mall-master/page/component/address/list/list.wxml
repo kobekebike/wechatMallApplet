@@ -8,7 +8,7 @@
                 <label class="m-data-top-right">{{item.phone}}<label wx:if="{{item.isDefault}}" class='m-data-top-right-default'>默认</label></label>
             </view>
             <view class="m-data-right">
-                <label class="m-data-bottom-left">{{item.detailAddress}}</label>
+                <label class="m-data-bottom-left">{{item.city}}{{item.detailAddress}}</label>
             </view>
             <view class='m-data-edit' catchtap="editAddress" data-addressdata="{{item}}">
               <image class="icon" src="../../image/icon4.png"/>

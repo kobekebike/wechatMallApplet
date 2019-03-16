@@ -25,28 +25,53 @@
     </view>
   </view>
   -->
-   <view class="selected">
+   <!-- <view class="selected">
     <view class="select-title">
       <input placeholder="请输入商品名称" auto-focus bindchange="search"/> 
     </view>
-   </view> 
-  <view class="newest">
-     <!--<view class="newest-title">
-      <text>商品中心</text>
-    </view>-->
-    <view class="newest-box">
-      <view wx:for="{{odd_goods}}" wx:key="{{index}}" wx: class="newest-list">
-        <navigator url="details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
-          <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
-          <view class="newest-text">
-            <text>{{utils.toSub(item.productTitle)}}</text>
+   </view>  -->
+    <view class="cates">
+        <view class="cate" bindtouchstart='jumpCartList'>
+          <view class="cate-num">{{cartNum}}</view>
+          <image src="image/cart4.png" class="img" mode="aspectFit" />
+          <text class="name">购物车</text>
+          <hr class="cate-hr"/>
+        </view>
+        <view class="cate" bindtouchstart='jumpAddressList'>
+          <image src="image/addr.png" class="img" mode="aspectFit" />
+          <text class="name">地址管理</text>
+          <hr class="cate-hr"/>
+        </view>
+    </view>
+  <view class="goods-tab-box">
+    <block wx:for="{{typeList}}" wx:key="{{index}}" wx:for-item="type">
+      <view class="goods-tab-nav {{curIndex === type.sort ?'on':''}}" style='width:{{typeWidth}}%;' bindtap="bindTap" data-index="{{type.sort}}">{{type.typeName}}</view>
+    </block>
+    <view class="goods-content">
+      <block wx:for="{{typeList}}" wx:key="{{index}}" wx:for-item="type">
+        <view wx:if="{{curIndex === type.sort}}">
+          <view class="newest">
+            <view class="newest-box">
+              <block wx:for="{{odd_goods}}" wx:key="{{index}}">
+                <block wx:if="{{type.typeId == item.productTypeId}}">
+                  <view class="newest-list">
+                      <navigator url="details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+                        <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+                        <view class="newest-text">
+                          <text>{{utils.toSub(item.productTitle)}}</text>
+                        </view>
+                        <view class="newest-text-price">
+                          <view class='newest-text-price-left'><text>￥{{utils.toFix(item.productPrice)}}</text><text class='newest-text-price-left-text'>已售120</text></view>
+                          <view class='newest-text-price-right'><image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image></view>
+                        </view>
+                      </navigator>
+                  </view>
+                </block>
+              </block>
+            </view>
           </view>
-          <view class="newest-text-price">
-            <text>￥{{utils.toFix(item.productPrice)}} </text>
-            <image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image>
-          </view>
-        </navigator>
-      </view>
+        </view>
+      </block>
     </view>
   </view>
 </view>

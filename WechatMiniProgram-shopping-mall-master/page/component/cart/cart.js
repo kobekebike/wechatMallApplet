@@ -235,5 +235,26 @@ Page({
         }
       }
     });
+  },
+  editCount: function(e){
+    let num = e.detail.value;
+    const index = e.currentTarget.dataset.index;
+    const orderId = e.currentTarget.dataset.orderid;
+    const price = e.currentTarget.dataset.price;
+    const obj = e.currentTarget.dataset.obj;
+    let carts = this.data.carts;
+    let productNum = carts[index].productNum;
+    if (num <= 1) {
+      this.setData({
+        carts: carts
+      });
+      return false;
+    }
+    carts[index].productNum = num;
+    this.updateOrderNum(num, orderId, price);
+    this.setData({
+      carts: carts
+    });
+    this.getTotalPrice();
   }
 })

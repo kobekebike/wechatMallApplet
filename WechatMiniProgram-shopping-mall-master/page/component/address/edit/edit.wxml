@@ -1,8 +1,8 @@
 <view class="main">
     <view class="form-box">
         <form bindsubmit="formSubmit">
-            <view class='row-cls'><label class='row-lab'>*</label><input value="{{address.addressee}}" name="addressee" placeholder="姓名"/></view>
-            <view class='row-cls'><label class='row-lab'>*</label><input type="number" name="phone" value="{{address.phone}}" placeholder="电话号码"/></view>
+            <view class='row-cls'><label class='row-lab'>*</label><input value="{{address.addressee}}" type='text' name="addressee" placeholder="姓名"/></view>
+            <view class='row-cls'><label class='row-lab'>*</label><input type="number" name="phone" value="{{address.phone}}" placeholder="手机号码" maxlength='11'/></view>
             <view class="region-box">
               <picker mode="region" bindchange="bindRegionChange" value="{{region}}" custom-item="{{customItem}}">
                   <view class="region-manage">
@@ -10,7 +10,7 @@
                   </view>
                 </picker>
             </view>
-            <view class='row-cls'><label class='row-lab'>*</label><input name="detailAddress" value="{{address.detailAddress}}" placeholder="详细地址"/></view>
+            <view class='row-cls'><label class='row-lab'>*</label><input type='text' name="detailAddress" value="{{address.detailAddress}}" placeholder="详细地址"/></view>
             <view class="default-box">
                 <view class="default-manage">
                     <label class='default-left'>设为默认</label>

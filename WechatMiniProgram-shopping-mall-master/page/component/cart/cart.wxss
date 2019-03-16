@@ -47,7 +47,7 @@
 }
 .cart-list .cart-count-box text{
     display: inline-block;
-    line-height: 80rpx;
+    line-height: 60rpx;
     text-align: center;
 }
 .cart-count-down,.cart-count-add{
@@ -78,7 +78,7 @@
     line-height: 90rpx;
     padding:0 100rpx 0 80rpx;
     box-sizing: border-box;
-    background: #AB956D;
+    background: #93d5cd;
     color: #fff;
 }
 .total-select{
@@ -115,23 +115,21 @@
     background-color: #eeeeee;
 }
 .spec-btn{
-    font-size: 10pt;
+    font-size: 40rpx;
     background-color: white;
     margin: 0;
     margin-right:10rpx; 
-    border:1rpx solid #35B6DD;
     border-radius: 0;
-     width: 50rpx;
+    width: 50rpx;
 }
 .num-ipnut {
-    background-color: white;
-    border:1rpx solid #35B6DD;
+    background-color: #f2f8f7;
     width: 100rpx;
     font-size:12pt;
     margin-right:10rpx; 
     padding: 5rpx;
     text-align: center;
-    height: 1.8em;
+    height: 60rpx;
 }
 .spe-lst{
     float: left;

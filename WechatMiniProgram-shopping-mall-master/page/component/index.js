@@ -5,20 +5,16 @@ const imageHeadUrl = app.globalData.imageHeadUrl;
 let userId = app.globalData.userId;
 Page({
   data: {
-    imgUrls: [
-      '/image/b1.jpg',
-      '/image/b2.jpg',
-      '/image/b3.jpg'
-    ],
-    indicatorDots: false,
-    autoplay: false,
     odd_goods: [],
     title_goods:[],
     productGoods:[],
-    new_even: "jjfdsafsdafsdafasf",
     interval: 3000,
     duration: 800,
-    imageHeadUrl: imageHeadUrl
+    imageHeadUrl: imageHeadUrl,
+    curIndex: 1,
+    typeList: {},
+    typeWidth: "",
+    cartNum: 0
   },
   onLoad(){
     userId = getApp().globalData.userId;
@@ -30,24 +26,43 @@ Page({
       duration: 10000
     });
     var self = this;
-
-    // wx.request({
-    //   url: 'http://localhost:8080/yMybatis/good/get_title',
-    //   success(res) {
-    //     self.setData({
-    //       title_goods: res.data,
-    //     });
-    //   },
-    // });
+    //获取类型列表
+    wx.request({
+      url: headUrl + '/productTypeController/getAllProductTypeList.do?method=doWx',
+      success(res) {
+        if (res.data.code == "0" && res.data.data.length > 0) {
+          self.setData({
+            typeList: res.data.data,
+            typeWidth: (100 / res.data.data.length)
+          });
+        }
+      },
+    });
     //获取商品列表 yjf
     wx.request({
       url: headUrl +'/productController/getProductListByCriteria.do?method=doWx',
       success(res) {
         if (res.data.code == "0"){
           wx.hideToast();
-          console.log(res.data.data);
           self.setData({
             odd_goods: res.data.data
+          });
+        }
+      }
+    });
+  },
+  /**
+   * 生命周期函数--监听页面显示
+   */
+  onShow(){
+    const that = this;
+    //获取购物车数量
+    wx.request({
+      url: headUrl + '/mallOrderController/getCartMallOrderCountByUserId.do?method=doWx&userId='+userId,
+      success(res) {
+        if (res.data.code == "0") {
+          that.setData({
+            cartNum: res.data.data
           });
         }
       }
@@ -104,5 +119,23 @@ Page({
         }
       }
     });
+  },
+  bindTap:function(e) {
+    const index = parseInt(e.currentTarget.dataset.index);
+    this.setData({
+      curIndex: index
+    })
+  },
+  //跳转到地址列表
+  jumpAddressList: function(){
+    wx.navigateTo({
+      url: "address/list/list?isSelect=false"
+    })
+  },
+  //跳转到购物车
+  jumpCartList: function(){
+    wx.switchTab({
+      url: 'cart/cart'
+    })
   }
 })

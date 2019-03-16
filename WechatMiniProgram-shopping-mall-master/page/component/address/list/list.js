@@ -92,7 +92,6 @@ Page({
   },
   //编辑地址
   editAddress: function(e){
-    console.log(e)
     wx.navigateTo({
       url: '../edit/edit?address=' + JSON.stringify(e.currentTarget.dataset.addressdata)
     })
@@ -145,14 +144,16 @@ Page({
       url: headUrl + '/addressController/getAddressListByUserId.do?method=doWx&userId=' + userId,
       success(res) {
         if (res.data.code == "0") {
-          console.log(res.data.data)
           if (res.data.data.length > 0 && res.data.data[0] != null) {
             that.setData({
-              address: res.data.data
+              address: res.data.data,
+              ['prompt.hidden']: true,
+              ['address[0].city']: res.data.data[0].cityName.replace(/\-/g, "")
             });
           } else {
             that.setData({
-              ['prompt.hidden']: !that.data.prompt.hidden
+              address:{},
+              ['prompt.hidden']: false
             })
           }
         }

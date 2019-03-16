@@ -33,6 +33,14 @@ Page({
   formSubmit(e){
     const value = e.detail.value;
     if (value.addressee && value.phone && value.detailAddress && this.data.cityName != ''){
+      if (!(/^1[3456789]\d{9}$/.test(value.phone))) {
+        wx.showModal({
+          title: '提示',
+          content: '请填写正确的手机号码',
+          showCancel: false
+        })
+        return false;
+      }
       value.cityCode = this.data.cityCode;
       value.cityName = this.data.cityName;
       var url = '';
