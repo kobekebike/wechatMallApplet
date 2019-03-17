@@ -33,7 +33,8 @@ Page({
         if (res.data.code == "0" && res.data.data.length > 0) {
           self.setData({
             typeList: res.data.data,
-            typeWidth: (100 / res.data.data.length)
+            typeWidth: (100 / res.data.data.length),
+            curIndex: res.data.data[0].sort
           });
         }
       },
