@@ -96,12 +96,12 @@ swiper-item image {
   height: 100rpx;
 }
 .cates .cate .name {
-  color: #93d5cd;
+  color: #70d1c9;
   font-size: 20rpx;
 }
 .cates .cate .cate-hr{
   width:50%;
-  border:1rpx solid #93d5cd;
+  border:1rpx solid #70d1c9;
   margin-top:35rpx;
 }
 
@@ -112,7 +112,7 @@ swiper-item image {
     width: 1px;
     height: 50px;
     content: "";
-    background: #93d5cd;
+    background: #70d1c9;
 }
 .goods-tab-nav{
     display: inline-block;
@@ -125,8 +125,8 @@ swiper-item image {
     color: #c7c7cb;
 }
 .goods-tab-nav.on{
-    color: #93d5cd;
-    border-bottom: 5rpx solid #93d5cd;
+    color: #70d1c9;
+    border-bottom: 5rpx solid #70d1c9;
 }
 .goods-content{
   padding-top:30rpx;
