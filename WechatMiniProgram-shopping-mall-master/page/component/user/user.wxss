@@ -104,7 +104,7 @@
     top: 35rpx;
     height: 120rpx;
     line-height: 120rpx;
-    color: #b42f2d;
+    color: #70d1c9;
 }
 .orders-footer{
     height: 60rpx;
@@ -118,6 +118,6 @@
     height: 60rpx;
     line-height:60rpx;
     border-radius: 6rpx;
-    background: #b42f2d;
+    background: #70d1c9;
     color: #fff;
 }

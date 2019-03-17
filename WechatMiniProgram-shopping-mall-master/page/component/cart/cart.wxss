@@ -36,7 +36,6 @@
     float: right;
     height: 105rpx;
     line-height: 50rpx;
-     color: #ff7800;
 }
 .cart-list .cart-count-box{
     position: absolute;
@@ -67,7 +66,7 @@
     line-height: 80rpx;
     text-align: center;
     font-size: 34rpx;
-    color: red;
+    color: #70d1c9;
 }
 .cart-footer{
     position: fixed;
