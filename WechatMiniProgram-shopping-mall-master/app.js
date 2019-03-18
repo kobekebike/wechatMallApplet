@@ -55,27 +55,15 @@ App({
             }
           })          
         }else{
-          if (this.isShowLoginPageCallback){
-            this.isShowLoginPageCallback(true);
-          }
         }
       }
     })
   },
   onLoad: function(){
-    app.userInfoReadyCallback = userInfo =>{
-      if(userInfo){
-        this.globalData.userInfo = userInfo
-      }
-    }
-    app.userIdReadyCallback = userId => {
-      if (userId) {
-        this.globalData.userId = userId
-      }
-    }
+    
   },
   onShow: function () {
-    console.log('App Show')
+    console.log('App Show');
   },
   onHide: function () {
     console.log('App Hide')

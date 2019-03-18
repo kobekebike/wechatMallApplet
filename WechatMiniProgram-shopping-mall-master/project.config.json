@@ -9,8 +9,8 @@
 	},
 	"compileType": "miniprogram",
 	"libVersion": "1.6.0",
-	"appid": "wx8e40617ccf9609a7",
-	"projectname": "yjfWechatApplet",
+	"appid": "wx77803bd44da8f25f",
+	"projectname": "MealOrderSystem",
 	"condition": {
 		"search": {
 			"current": -1,

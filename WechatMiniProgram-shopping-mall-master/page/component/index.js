@@ -17,7 +17,7 @@ Page({
     cartNum: 0
   },
   onLoad(){
-    userId = getApp().globalData.userId;
+
   },
   onReady() {//获取奇数商品详情   
     wx.showToast({
@@ -56,18 +56,16 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow(){
-    const that = this;
-    //获取购物车数量
-    wx.request({
-      url: headUrl + '/mallOrderController/getCartMallOrderCountByUserId.do?method=doWx&userId='+userId,
-      success(res) {
-        if (res.data.code == "0") {
-          that.setData({
-            cartNum: res.data.data
-          });
+    if (userId == 0) {
+      app.userIdReadyCallback = res => {
+        if (res) {
+          userId = res
+          this.getCartNum();
         }
       }
-    });
+    }else{
+      this.getCartNum();
+    }
   },
   search: function (e) {
     console.log(headUrl + '/productController/getProductListByCriteria.do?method=doWx&searchText=' + e.detail.value);
@@ -95,6 +93,7 @@ Page({
     });
   },
   addToCart:function(e){
+    const that = this;
     wx.request({
       url: headUrl + "/mallOrderController/saveMallOrder.do?method=doWx&productId=" + e.currentTarget.dataset.productid + "&productNum=1&userId=" + userId + "&orderStatus=1&orderAmount=" + e.currentTarget.dataset.price,
       header: {
@@ -108,6 +107,9 @@ Page({
             icon: 'success',
             duration: 2000,
             mask: true//防止触摸穿透
+          })
+          that.setData({
+            cartNum: ++that.data.cartNum
           })
         }else{
           wx.showToast({
@@ -138,5 +140,19 @@ Page({
     wx.switchTab({
       url: 'cart/cart'
     })
+  },
+  //获取购物车数量
+  getCartNum: function(){
+    const that = this;
+    wx.request({
+      url: headUrl + '/mallOrderController/getCartMallOrderCountByUserId.do?method=doWx&userId=' + userId,
+      success(res) {
+        if (res.data.code == "0") {
+          that.setData({
+            cartNum: res.data.data
+          });
+        }
+      }
+    });
   }
 })

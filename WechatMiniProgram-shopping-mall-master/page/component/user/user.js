@@ -29,6 +29,16 @@ Page({
         nickname: userInfo.nickName,
         isAuth: true
       })
+    }else{
+      app.userInfoReadyCallback = res => {
+        if (res.userInfo){
+          this.setData({
+            thumb: res.userInfo.avatarUrl,
+            nickname: res.userInfo.nickName,
+            isAuth: true
+          })
+        }
+      }
     }
     // var self = this;
     /**
