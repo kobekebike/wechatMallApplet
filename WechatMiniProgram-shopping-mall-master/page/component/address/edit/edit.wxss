@@ -13,6 +13,7 @@
 }
 .form-box button{
     margin:30rpx 30rpx 0 0;
+    background:#70d1c9
 }
 .form-box .row-cls{
   display:flex;
