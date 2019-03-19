@@ -3,7 +3,7 @@
     <view bindtap='updateAddressInfo'>
         <view wx:if="{{hasAddress}}" class="orders-address">
             <view class="orders-address-name">收货人: {{address.addressee}}</view>
-            <view class="orders-address-detail">电话：{{address.phone}}</view>
+            <view class="orders-address-detail">联系电话：{{address.phone}}</view>
             <view class="orders-address-phone">详细地址： {{address.detailAddress}}</view>
         </view>
         <view wx:else class="orders-no-address">添加收货地址</view>
@@ -13,19 +13,7 @@
         <view wx:for="{{orders}}" wx:key="index" class="orders-list">
              <image class="orders-thumb" src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
             <view class="orders-pro-name">
-            {{item.productTitle[0]}}
-            {{item.productTitle[1]}}
-            {{item.productTitle[2]}}
-            {{item.productTitle[3]}}
-            {{item.productTitle[4]}}
-            {{item.productTitle[5]}}
-            {{item.productTitle[6]}}
-            {{item.productTitle[7]}}
-            {{item.productTitle[8]}}
-            {{item.productTitle[9]}}
-            {{item.productTitle[10]}}
-            {{item.productTitle[11]}}
-            ...
+            {{filters.toSub(item.productTitle)}}
             </view> 
             <view class="orders-pro-price">￥{{filters.toFix(item.productPrice)}}</view>
             <view class="orders-count-num">×{{item.productNum}}</view> 

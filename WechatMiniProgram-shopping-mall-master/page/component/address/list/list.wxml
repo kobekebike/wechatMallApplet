@@ -17,7 +17,7 @@
     </view>
     <template is="prompt" data="{{ prompt }}"/>
     <view class="btn-plus" bindtap="toAddressAdd">
-        <button class='add-address-btn'>+ 新增地址</button>
+        <button class='add-address-btn'>新增地址</button>
     </view>
   </scroll-view>
 </view>
