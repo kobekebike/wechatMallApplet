@@ -80,7 +80,14 @@
     width: 510rpx;
     padding-left: 30rpx;
     box-sizing: border-box;
-    color: #a55350;
+    color: #ff7800;
+}
+
+.orders-pro-price{
+  display: inline-block;
+  width: 510rpx;
+  box-sizing: border-box;
+  color: #ff7800;
 }
 .orders-footer .orders-footer-btn{
     display: inline-block;
