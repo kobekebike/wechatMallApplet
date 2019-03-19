@@ -78,11 +78,13 @@ Page({
           wx.hideToast();
           if (res.data.data.length > 0){
             self.setData({
-              orders: res.data.data
+              orders: res.data.data,
+              ['prompt.hidden']: true
             });
           } else {
             self.setData({
-              ['prompt.hidden']: !self.data.prompt.hidden
+              orders:[],
+              ['prompt.hidden']: false
             })
           }
         }
