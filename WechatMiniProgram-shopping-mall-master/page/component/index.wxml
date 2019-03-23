@@ -61,7 +61,7 @@
                           <text>{{utils.toSub(item.productTitle)}}</text>
                         </view>
                         <view class="newest-text-price">
-                          <view class='newest-text-price-left'><text>￥{{utils.toFix(item.productPrice)}}</text><text class='newest-text-price-left-text'>已售120</text></view>
+                          <view class='newest-text-price-left'><text>￥{{utils.toFix(item.productPrice)}}</text><text class='newest-text-price-left-text'>已售{{item.soldOutNum}}</text></view>
                           <view class='newest-text-price-right'><image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image></view>
                         </view>
                       </navigator>
