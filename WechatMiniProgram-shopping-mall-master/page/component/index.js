@@ -59,7 +59,8 @@ Page({
     if (userId == 0) {
       app.userIdReadyCallback = res => {
         if (res) {
-          userId = res
+          userId = res;
+          app.globalData.userId = res;
           this.getCartNum();
         }
       }
@@ -84,7 +85,6 @@ Page({
       success: function (res) {
         wx.hideToast();
         if (res.data.code == "0") {
-          console.log(res.data.data);
           that.setData({
             odd_goods: res.data.data
           });

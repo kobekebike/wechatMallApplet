@@ -8,13 +8,75 @@
       <image wx:else class="userinfo-avatar" src="{{thumb}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{nickname}}</text>
     </view>
-    <view class="address-box">
-        <view class="address-manage">
-            <navigator url="/page/component/address/list/list?isSelect=false">地址管理</navigator>
+    <view class="list-box">
+        <view class="list-manage">
+          <navigator url="/page/component/address/list/list?isSelect=false"><image src='../image/icon6.png' class='list-manage-image'/>地址管理</navigator>
         </view>
     </view>
-    <view class="orders-box">
-        <view class="orders">我的订单</view>
+    <view class="list-order-box">
+        <view class="list-order"><image src='../image/icon7.png' class='list-manage-image'/>订单管理
+        </view>
+    </view>
+    <view class="cates">
+        <view data-index="0" class="cate" bindtap="bindTap">
+          <image src="../image/icon10-{{curIndex === 0 ?'1':'2'}}.png" class="img" mode="aspectFit" />
+          <text class="name {{curIndex === 0 ?'on':''}}">待付款</text>
+        </view>
+        <view data-index="1" class="cate" bindtap="bindTap">
+          <image src="../image/icon9-{{curIndex === 1 ?'1':'2'}}.png" class="img" mode="aspectFit" />
+          <text class="name {{curIndex === 1 ?'on':''}}">已付款</text>
+        </view>
+        <view data-index="2" class="cate" bindtap="bindTap">
+          <image src="../image/icon8-{{curIndex === 2 ?'1':'2'}}.png" class="img" mode="aspectFit" />
+          <text class="name {{curIndex === 2 ?'on':''}}">待收货</text>
+        </view>
+    </view>
+    <view class='l-main'>
+      <view class='la la-left' style="width:{{curIndex === 0 ?'19':(curIndex === 1 ? 50 : 81)}}%;"></view>
+      <view class='lb'></view>
+      <view class='la la-right' style="width:{{curIndex === 0 ?'81':(curIndex === 1 ? 50 : 19)}}%;"></view>
+    </view>
+
+      <view wx:if="{{curIndex === 0}}">
+        <view class='orders-box'>
+          <view class="orders-list" wx:for="{{obligation}}" wx:key="index">
+            <view class="orders-number">订单编号：{{item.orderNum}}</view>
+            <view class="orders-detail orders-obligation">
+
+              <icon wx:if="{{item.selected}}" type="success" color="#70d1c9" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
+              <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
+
+              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+                  <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+                </navigator>
+                <view class="">{{filters.toSub(item.productTitle)}}</view>
+                <view class="">×{{item.productNum}}</view>
+                <text class="orders-status" wx:if="{{item.orderStatus==1}}">付款中</text>
+                <text class="orders-status" wx:if="{{item.orderStatus==2}}">已付款</text>
+                <text class="orders-status" wx:if="{{item.orderStatus==3}}">已发货</text>
+                <text class="orders-status" wx:if="{{item.orderStatus==4}}">取消</text>
+            </view>
+            <view class="orders-footer">
+                <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
+                <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders" data-orderinfo='{{item}}'>付款</button>
+            </view>
+          </view>
+        </view>
+        <view class="cart-footer" wx:if="{{prompt2.hidden}}">
+          <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll" />
+          <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll" />
+          <view class="order-icon">
+            <view bindtap="selectOrderData">
+              <image src="/page/component/image/icon3.png"></image>
+            </view>
+          </view>
+          <text>全选</text>
+          <text class="cart-toatl-price">￥{{totalPrice}}</text>
+        </view>
+        <template is="prompt" data="{{ prompt2 }}"/>
+      </view>
+
+      <view wx:if="{{curIndex === 1}}">
         <view class="orders-list" wx:for="{{orders}}" wx:key="index">
             <view class="orders-number">订单编号：{{item.orderNum}}</view>
             <view class="orders-detail">
@@ -34,5 +96,27 @@
             </view>
         </view>
         <template is="prompt" data="{{ prompt }}"/>
+    </view>
+
+    <view wx:if="{{curIndex === 2}}">
+      <view class="orders-list" wx:for="{{receiving}}" wx:key="index">
+          <view class="orders-number">订单编号：{{item.orderNum}}</view>
+          <view class="orders-detail">
+            <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+                <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+              </navigator>
+              <view class="">{{filters.toSub(item.productTitle)}}</view>
+              <view class="">×{{item.productNum}}</view>
+              <text class="orders-status" wx:if="{{item.orderStatus==1}}">付款中</text>
+              <text class="orders-status" wx:if="{{item.orderStatus==2}}">已付款</text>
+              <text class="orders-status" wx:if="{{item.orderStatus==3}}">已发货</text>
+              <text class="orders-status" wx:if="{{item.orderStatus==4}}">取消</text>
+          </view>
+          <view class="orders-footer">
+              <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
+              <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders" data-orderinfo='{{item}}'>付款</button>
+          </view>
+      </view>
+      <template is="prompt" data="{{ prompt3 }}"/>
     </view>
 </view>
