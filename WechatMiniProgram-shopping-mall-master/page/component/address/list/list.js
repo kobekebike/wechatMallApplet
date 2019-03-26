@@ -147,8 +147,7 @@ Page({
           if (res.data.data.length > 0 && res.data.data[0] != null) {
             that.setData({
               address: res.data.data,
-              ['prompt.hidden']: true,
-              ['address[0].city']: res.data.data[0].cityName.replace(/\-/g, "")
+              ['prompt.hidden']: true
             });
           } else {
             that.setData({

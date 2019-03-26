@@ -1,5 +1,10 @@
 App({
   onLaunch: function () {
+    wx.showToast({
+      title: "加载中...",
+      icon: "loading",
+      duration: 10000
+    });
     // 登录
     wx.login({
       success: res => {
@@ -12,7 +17,8 @@ App({
             if(res.data.code == "0"){
               that.globalData.userId = res.data.data;
               if (that.userIdReadyCallback) {
-                that.userIdReadyCallback(res.data.data)
+                that.userIdReadyCallback(res.data.data);
+                wx.hideToast();
               }
             }else{
 
@@ -70,8 +76,8 @@ App({
   },
   globalData: {
     hasLogin: false,
-    headUrl: "http://www.jfy.com",//全局地址头
-    imageHeadUrl: "http://image.jfy.com",//全局图片地址头
+    headUrl: "https://www.jfegf.com",//全局地址头
+    imageHeadUrl: "https://www.jfegf.com/baseFileHome",//全局图片地址头
     userId: 0,//全局用户标识
     isShowLoginPage: null,//判断是否显示确认登录页面
     userInfo: null,//用户信息
