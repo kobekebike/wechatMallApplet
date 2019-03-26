@@ -20,11 +20,6 @@
   flex-direction:row;
   border-bottom: 1rpx solid #ededed;
 }
-.form-box .row-cls .row-lab{
-  margin-top:30rpx;
-  margin-right:10rpx;
-  color:red;
-}
 .region-box{
   border-bottom: 1rpx solid #ededed;
   color: #999;
@@ -54,7 +49,6 @@
 .default-box{
     color: #999;
     line-height: 90rpx;
-    margin-left:25rpx;
 }
 .default-box .default-manage{
     display:flex;

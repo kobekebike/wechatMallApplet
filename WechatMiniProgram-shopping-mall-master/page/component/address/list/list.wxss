@@ -99,6 +99,6 @@ page{
 }
 
 .m-data-edit .icon {
-    width: 15px; 
-    height: 15px;
+    width: 40rpx; 
+    height: 40rpx;
 }
