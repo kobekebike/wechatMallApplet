@@ -10,9 +10,12 @@ swiper-item image {
 .select-title,.newest-title{/**首页中的子标题的字体样式*/
     width: 100%;
     padding:30rpx 100rpx;
-    height: 40rpx;
+    height: 30rpx;
     color: #AB956D;
     text-align: left;
+}
+.searchinput{
+  background-color:  rgb(241, 239, 239);
 }
 .select-top-small{
     width: 375rpx;
@@ -76,15 +79,18 @@ swiper-item image {
 .cates {
   position: relative;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: stretch;
-  padding-bottom: 20rpx;
-  background-color: #fafdfd;
+  /* flex-wrap: wrap; */
+  justify-content: right;
+  /* padding-bottom: 20rpx; */
+  background-color: #fbffff;
+    flex-direction: row;
+    height: 98rpx;
+    background: #f2f4f5;
+    align-items: center;
 }
 .cates .cate {
-  width: 50%;
-  height: 170rpx;
+  width: 30%;
+  height: 40rpx;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -92,8 +98,11 @@ swiper-item image {
   margin-top: 20rpx;
 }
 .cates .cate .img {
-  width: 70rpx;
-  height: 100rpx;
+  position: absolute;
+	top: 27%;
+	left: 87.5%;
+  width: 45rpx;
+  height: 45rpx;
 }
 .cates .cate .name {
   color: #70d1c9;
@@ -108,8 +117,8 @@ swiper-item image {
 .cates .cate::before {
     position: absolute;
     top: 40rpx;
-    left: 50%;
-    width: 1px;
+    left: 100%;
+    width: 0px;
     height: 50px;
     content: "";
     background: #70d1c9;
@@ -134,7 +143,7 @@ swiper-item image {
 .cates .cate .cate-num{
   position: absolute;
 	top: 27%;
-	left: 27.5%;
+	left: 90.5%;
 	width: 20rpx;
   height: 20rpx;
   line-height:20rpx;
@@ -159,4 +168,28 @@ swiper-item image {
   font-size: 18rpx;
   color: #65716f;
   padding-left:10rpx;
+}
+
+view.searchItem {
+    display: flex;
+    width: 100%;
+    background: #fff;
+    flex-direction: row;
+    border-radius: 10rpx;
+    margin-right: 20rpx;
+    margin-left: 40rpx;
+}
+
+.searchIcon {
+    height: 42rpx;
+    width: 42rpx;
+    align-self: center;
+    margin-left: 10rpx;
+    margin-right: 20rpx;
+    margin-top: 10rpx;
+}
+
+view.searchItem input {
+    flex: 1;
+    font-size: 30rpx;
 }

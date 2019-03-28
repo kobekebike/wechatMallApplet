@@ -77,6 +77,8 @@ App({
     hasLogin: false,
     headUrl: "https://www.jfegf.com",//全局地址头
     imageHeadUrl: "https://www.jfegf.com/baseFileHome",//全局图片地址头
+    //headUrl: "http://www.jfy.com",//全局地址头
+   // imageHeadUrl: "http://image.jfy.com",//全局图片地址头
     userId: 0,//全局用户标识
     isShowLoginPage: null,//判断是否显示确认登录页面
     userInfo: null,//用户信息
