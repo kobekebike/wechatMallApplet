@@ -104,7 +104,6 @@ Page({
               ['prompt3.hidden']: receivingflag
             });
             self.getTotalPrice();
-            wx.hideToast();
           } else {
             self.setData({
               obligation:[],
@@ -116,6 +115,7 @@ Page({
               curIndex: 0
             })
           }
+          wx.hideToast();
         }
       }
     });

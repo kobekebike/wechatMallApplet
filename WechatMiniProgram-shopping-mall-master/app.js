@@ -1,9 +1,10 @@
 App({
   onLaunch: function () {
-    wx.showLoading({
-      title: '加载中',
-      mask: true
-    })
+    wx.showToast({
+      title: "加载中...",
+      icon: "loading",
+      duration: 10000
+    });
     // 登录
     wx.login({
       success: res => {
@@ -17,7 +18,7 @@ App({
               that.globalData.userId = res.data.data;
               if (that.userIdReadyCallback) {
                 that.userIdReadyCallback(res.data.data);
-                wx.hideLoading();
+                wx.hideToast();
               }
             }else{
 
@@ -70,7 +71,7 @@ App({
   onShow: function () {
     console.log('App Show');
   },
-  onHide: function () {
+  onHide: function () {    
     console.log('App Hide')
   },
   globalData: {

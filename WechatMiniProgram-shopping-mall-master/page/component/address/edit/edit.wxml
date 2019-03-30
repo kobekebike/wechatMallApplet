@@ -17,7 +17,7 @@
                     <label class='default-right'><switch class='default-switch' checked="{{address.isDefault}}" name ='isDefault'/></label>
                 </view>
             </view>
-            <button form-type="submit" type='warn'>保存</button>
+            <button form-type="submit">保存</button>
         </form>
     </view>
 </view>

@@ -73,23 +73,27 @@ Page({
       success: function (e) {
         if(e.data.code == "0"){
           console.log(e);
+          console.log(e.data.data.package)
           wx.requestPayment({
-            timeStamp: e.data.data.timeStamp,
-            nonceStr: e.data.data.nonceStr,
-            package: e.data.data.package,
-            signType: e.data.data.signType,
-            paySign: e.data.data.paySign,
-            success: function (res) {
-              console.log(e.data.data.package)
+            'timeStamp': e.data.data.timeStamp + "",
+            'nonceStr': e.data.data.nonceStr,
+            'package': e.data.data.package,
+            'signType': e.data.data.signType,
+            'paySign': e.data.data.paySign,
+            'success': function (res) {
+              
               console.log(res)
             },
-            fail: function (res) {
+            'fail': function (res) {
               console.log(res)
               wx.showModal({
                 title: '支付提示',
                 content: e.data.data.signType,
                 showCancel: false
               })
+            },
+            'complete': function (res) {
+              console.log(res)
             }
           })
         }
