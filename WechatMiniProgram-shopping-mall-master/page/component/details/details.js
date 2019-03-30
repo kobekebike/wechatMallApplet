@@ -13,6 +13,7 @@ Page({
       productType: '',
       productFilePath:'',
       productDescribe: '',
+      soldOutNum:'',
       service: '如果有质量问题请联系客户人员。欢迎下次光临！'
     },
     num: 1,
@@ -21,7 +22,8 @@ Page({
     curIndex: 0,
     show: false,
     scaleCart: false,
-    imageHeadUrl: imageHeadUrl
+    imageHeadUrl: imageHeadUrl,
+    indicatorDots: false,//是否显示面板指示点
   },
   //获取从首页或购物车传过来的数据,这样就可以取出json数组中里面的字符串再放到一个数组中，解决了首页就处理数组字符串的问题
   onLoad: function (options) {
@@ -29,10 +31,11 @@ Page({
     this.setData({
       productId: options.productId,
       productTitle: options.productTitle,
-      productPrice: options.productPrice,
+      productPrice: Number(options.productPrice).toFixed(2),
       productType: options.productType,
       productFilePath: options.productFilePath,
       productDescribe:options.productDescribe,
+      soldOutNum: options.soldOutNum
     })
     var self = this;
     wx.request({
@@ -100,6 +103,10 @@ Page({
     this.setData({
       curIndex: index
     })
+  },
+  toIndex(){
+    wx.switchTab({
+      url: '../index'
+    })
   }
-
 })

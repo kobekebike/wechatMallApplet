@@ -59,13 +59,19 @@
               <block wx:for="{{odd_goods}}" wx:key="{{index}}">
                 <block wx:if="{{type.typeId == item.productTypeId}}">
                   <view class="newest-list">
-                      <navigator url="details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+                      <navigator url="details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}&soldOutNum={{item.soldOutNum}}">
                         <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
                         <view class="newest-text">
                           <text>{{utils.toSub(item.productTitle)}}</text>
                         </view>
                         <view class="newest-text-price">
-                          <view class='newest-text-price-left'><text>￥{{utils.toFix(item.productPrice)}}</text><text class='newest-text-price-left-text'>已售{{item.soldOutNum}}</text></view>
+                          <view class='newest-text-price-left'>
+                            <view class='newest-price'>￥{{utils.toFix(item.productPrice)}}</view>
+                            <view class='newest-text-price-left-text'>
+                              <view>已售{{item.soldOutNum}}</view>
+                              <view class='newest-text-price-left-text-right'>热售7折</view>
+                            </view>
+                          </view>
                           <view class='newest-text-price-right'><image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image></view>
                         </view>
                       </navigator>

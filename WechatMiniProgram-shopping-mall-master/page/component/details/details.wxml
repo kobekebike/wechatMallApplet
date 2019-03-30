@@ -1,16 +1,28 @@
 <view class="main">
   <view class="goods-box">
-    <image src="{{imageHeadUrl}}{{productFilePath}}" class="goods-thumb"></image>
-    <view class="goods-operation">
-      <!-- <text class="goods-operation-num">数量  {{num}}</text>
-      <text class="goods-operation-add" bindtap="addCount">+</text> -->
-      <view> 
-      <text class="goods-to-cart" bindtap="click">加入购物车</text>
-      <image src="/page/component/image/cart1.png" class="goods-cart-img" bindtap="click"></image>
+    <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="true"
+            autoplay="false">
+            <swiper-item>
+                <image src="{{imageHeadUrl}}{{productFilePath}}" class="slide-image"/>
+            </swiper-item>
+    </swiper>
+
+    <view class="goods-title">{{productTitle}}</view>
+    <view class="goods-price-color">
+      <text>￥</text>
+      <text class="goods-price">{{productPrice}}</text>
+      <text class="goods-price-color-text">已售{{soldOutNum}}</text>
+    </view>
+    <view class='goods-trait'>
+      <view class='goods-trait-one'>
+        <icon type="success_circle" color="#70d1c9" size="15" class='goods-trait-icon'/>
+        <text class='goods-trait-text'>正品保障</text>
+      </view>
+      <view class='goods-trait-two'>
+        <icon type="success_circle" color="#70d1c9" size="15" class='goods-trait-icon'/>
+        <text class='goods-trait-text'>极速发货</text>
       </view>
     </view>
-    <view class="goods-title">{{productTitle}}</view>
-    <view class="goods-price-color">￥ {{productPrice}}</view>
   </view>
   <view class="goods-tab-box">
     <view class="goods-tab-nav {{curIndex === 0 ?'on':''}}" bindtap="bindTap" data-index="0">商品详情</view>
@@ -26,4 +38,19 @@
       <view wx:if="{{curIndex === 2}}">{{goods.service}}</view>
     </view>
   </view>
+
+  <view class="cart-footer">
+    <view class="cart-footer-content">
+      <view class='cart-footer-left' bindtap="toIndex">
+          <image src="/page/component/image/12.png"></image>
+          <text class='cart-footer-left-text'>首页</text>
+        <!-- <view class='cart-footer-left-top'>
+        </view>
+        <view class='cart-footer-left-bottom'></view> -->
+      </view>
+      <view class='cart-footer-middle' bindtap="click">加入购物车</view>
+      <view class='cart-footer-right'>立即购买</view>
+    </view>
+  </view>
+
 </view>

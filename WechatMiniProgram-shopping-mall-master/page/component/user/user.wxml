@@ -46,7 +46,7 @@
               <icon wx:if="{{item.selected}}" type="success" color="#70d1c9" data-index="{{index}}" class="cart-pro-select" bindtap="selectList" />
               <icon wx:else type="circle" class="cart-pro-select" data-index="{{index}}" bindtap="selectList" />
 
-              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}&soldOutNum={{item.soldOutNum}}">
                   <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
                 </navigator>
                 <view class="">{{filters.toSub(item.productTitle)}}</view>
@@ -80,7 +80,7 @@
         <view class="orders-list" wx:for="{{orders}}" wx:key="index">
             <view class="orders-number">订单编号：{{item.orderNum}}</view>
             <view class="orders-detail">
-              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}&soldOutNum={{item.soldOutNum}}">
                   <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
                 </navigator>
                 <view class="">{{filters.toSub(item.productTitle)}}</view>
@@ -102,7 +102,7 @@
       <view class="orders-list" wx:for="{{receiving}}" wx:key="index">
           <view class="orders-number">订单编号：{{item.orderNum}}</view>
           <view class="orders-detail">
-            <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}">
+            <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}&soldOutNum={{item.soldOutNum}}">
                 <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
               </navigator>
               <view class="">{{filters.toSub(item.productTitle)}}</view>
