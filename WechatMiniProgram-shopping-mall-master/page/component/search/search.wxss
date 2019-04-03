@@ -83,15 +83,16 @@
 .newest-text-price-left .newest-text-price-left-text{
   font-size: 18rpx;
   color: #65716f;
+  padding-left:30rpx;
 }
 .newest-price{
   text-align: left;
-  padding-left: 10rpx;
+  padding-left: 30rpx;
 }
 .newest-text-price-left-text{
   display:flex;
   text-align: left;
-  padding-left:20rpx;
+  padding-left:30rpx;
 }
 .newest-text-price-left-text-right{
   padding-left:10rpx;
