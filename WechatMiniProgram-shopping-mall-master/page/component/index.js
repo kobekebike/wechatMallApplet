@@ -69,28 +69,9 @@ Page({
     }
   },
   search: function (e) {
-    console.log(headUrl + '/productController/getProductListByCriteria.do?method=doWx&searchText=' + e.detail.value);
-    wx.showToast({
-      title: "加载中...",
-      icon: "loading",
-      duration: 10000
-    });
-    var that = this;
-    wx.request({
-      url: headUrl + '/productController/getProductListByCriteria.do?method=doWx&searchText=' + e.detail.value,
-      data: {},
-      header: {
-        'Content-Type': 'application/json'
-      },
-      success: function (res) {
-        wx.hideToast();
-        if (res.data.code == "0") {
-          that.setData({
-            odd_goods: res.data.data
-          });
-        }
-      }
-    });
+    wx.navigateTo({
+      url: "search/search"
+    })
   },
   addToCart:function(e){
     const that = this;

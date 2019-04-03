@@ -36,9 +36,9 @@
             <icon type="search" size="13"/><input class="searchinput" placeholder-style='font-size:12px;' placeholder="搜索商品" auto-focus bindchange="search"/> 
           </view>
         </view> -->
-        <view class='searchItem'>
+        <view class='searchItem' bindtap='search'>
             <icon class="searchIcon" type="search" size="13"/>
-            <input placeholder='搜索商品' auto-focus bindchange="search"></input>
+            <text class='search-content'>搜索商品</text>
         </view>
         <view class="cate" bindtouchstart='jumpCartList'>
           <view class="cate-num">{{cartNum}}</view>
@@ -69,7 +69,10 @@
                             <view class='newest-price'>￥{{utils.toFix(item.productPrice)}}</view>
                             <view class='newest-text-price-left-text'>
                               <view>已售{{item.soldOutNum}}</view>
-                              <view class='newest-text-price-left-text-right'>热售7折</view>
+                              <view class='newest-text-price-left-text-right'>
+                              <text wx:if="{{item.productDiscount != null && item.productDiscount != 0}}">特惠{{item.productDiscount}}折</text>
+                              <text wx:else>正在热售</text>
+                              </view>
                             </view>
                           </view>
                           <view class='newest-text-price-right'><image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image></view>

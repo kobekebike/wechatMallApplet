@@ -152,3 +152,19 @@
     overflow: hidden;
     border-top: 1rpx #cccccc solid;
 }
+.total-price {
+  float:right;
+  width:50%;
+  height: 90rpx;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: flex-start;
+}
+.total-price-top{
+  font-size: 32rpx;
+}
+.total-price-bottom{
+  font-size: 20rpx;
+  margin-top: -50rpx;
+}

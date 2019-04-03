@@ -71,7 +71,7 @@
             </view>
           </view>
           <text>全选</text>
-          <text class="cart-toatl-price">￥{{totalPrice}}</text>
+          <view class='total-price'><text class='total-price-top'>合计：￥{{totalPrice}}</text><text class='total-price-bottom' wx:if="{{isDiscount}}">总额：￥{{discountTotal}}  立减：￥{{discountMoney}}</text></view>
         </view>
         <template is="prompt" data="{{ prompt2 }}"/>
       </view>

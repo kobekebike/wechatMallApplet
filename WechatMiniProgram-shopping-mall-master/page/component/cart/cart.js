@@ -20,7 +20,10 @@ Page({
       name: "hello"
     },
     model: '',
-    imageHeadUrl: imageHeadUrl
+    imageHeadUrl: imageHeadUrl,
+    isDiscount: false,//是否有折扣
+    discountTotal: 0, //折扣前的总金额
+    discountMoney: 0 //折扣金额
   },
   onLoad() {
     userId = getApp().globalData.userId;
@@ -210,14 +213,30 @@ Page({
   getTotalPrice: function() {
     let carts = this.data.carts;                  // 获取购物车列表
     let total = 0;
+    let discountTotal = 0;
+    let discountMoney = 0;
+    let isDiscount = false;
     for (let i = 0; i < carts.length; i++) {         // 循环列表得到每个数据
       if (carts[i].selected) {                     // 判断选中才会计算价格
-        total += carts[i].productNum * carts[i].productPrice;   // 所有价格加起来
+        if (carts[i].productDiscount != null && carts[i].productDiscount != 0){
+          //有折扣
+          total += carts[i].productNum * carts[i].productPrice * (carts[i].productDiscount/10);
+          discountMoney += carts[i].productNum * carts[i].productPrice * (1-carts[i].productDiscount / 10)
+        }else{
+          //没有折扣
+          total += carts[i].productNum * carts[i].productPrice;   // 所有价格加起来
+        }
+        discountTotal += carts[i].productNum * carts[i].productPrice;
       }
     }
+    if (discountMoney != 0){
+      isDiscount = true;
+    }
     this.setData({                                // 最后赋值到data中渲染到页面
-      carts: carts,
-      totalPrice: total.toFixed(2)
+      totalPrice: total.toFixed(2),
+      isDiscount: isDiscount,
+      discountTotal: discountTotal.toFixed(2),
+      discountMoney: discountMoney.toFixed(2)
     });
   },
   updateOrderNum: function(num, orderId, price){// 修改订单的数量

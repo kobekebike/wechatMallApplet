@@ -12,7 +12,10 @@ Page({
     orders: [],
     ma: "happy",
     imageHeadUrl: imageHeadUrl,
-    ip: ''
+    ip: '',
+    isDiscount: false,//是否有折扣
+    discountTotal: 0, //折扣前的总金额
+    discountMoney: 0 //折扣金额
   },
 
   //从服务器获取订单数据,onShow比onReady先执行
@@ -57,23 +60,91 @@ Page({
    * 计算总价
    */
   getTotalPrice() {
-    let orders = this.data.orders;
+    let carts = this.data.orders;
     let total = 0;
-    for (let i = 0; i < orders.length; i++) {
-      total += orders[i].productNum * orders[i].productPrice;
+    let discountTotal = 0;
+    let discountMoney = 0;
+    let isDiscount = false;
+    for (let i = 0; i < carts.length; i++) {         // 循环列表得到每个数据
+      if (carts[i].selected) {                     // 判断选中才会计算价格
+        if (carts[i].productDiscount != null && carts[i].productDiscount != 0) {
+          //有折扣
+          total += carts[i].productNum * carts[i].productPrice * (carts[i].productDiscount / 10);
+          discountMoney += carts[i].productNum * carts[i].productPrice * (1 - carts[i].productDiscount / 10)
+        } else {
+          //没有折扣
+          total += carts[i].productNum * carts[i].productPrice;   // 所有价格加起来
+        }
+        discountTotal += carts[i].productNum * carts[i].productPrice;
+      }
     }
-    this.setData({
-      total: total.toFixed(2)
-    })
+    if (discountMoney != 0) {
+      isDiscount = true;
+    }
+    this.setData({                                // 最后赋值到data中渲染到页面
+      total: total.toFixed(2),
+      isDiscount: isDiscount,
+      discountTotal: discountTotal.toFixed(2),
+      discountMoney: discountMoney.toFixed(2)
+    });
   },
 
   toPay() {
+    if (userId == 0){
+      userId = getApp().globalData.userId;
+      if (userId == 0) {
+        wx.showToast({
+          title: '当前网络异常，请稍后再试',
+          icon: 'success',
+          duration: 2000,
+          mask: true
+        })
+        return;
+      }
+    }
+
+    if(!this.data.address.addressId){
+      wx.showModal({
+        title: '提示',
+        content: '请选择收货地址',
+        showCancel: false
+      })
+      return;
+    }
+    let orders = this.data.orders;
+    if (orders.length == 0){
+      wx.navigateBack({
+        delta: 1, // 回退前(默认为1) 页面
+        success: function (res) {
+          wx.showModal({
+            title: '提示',
+            content: '请选择商品',
+            showCancel: false
+          })
+        }
+      })
+      return;
+    }
+    let str = "&orderId=";
+    let idArr = "";
+    for (let i = 0; i < orders.length; i++) {
+      idArr += str + orders[i].orderId;
+    }
+    let obj = new Object();
+    obj.userId = userId;
+    obj.cip = this.data.ip;
+    obj.total = this.data.total * 100;
+    obj.discountTotal = this.data.discountTotal;
+    obj.addressId = this.data.address.addressId
+
     wx.request({
-      url: headUrl + '/weChatPayController/weChatPay.do?method=doWx&userId=' + userId + '&cip=' + this.data.ip,
+      url: headUrl + '/weChatPayController/weChatPay.do?method=doWx' + idArr,
+      data: obj,
+      header: {
+        "Content-Type": "application/json;charset=utf-8",
+      },
       success: function (e) {
         if(e.data.code == "0"){
-          console.log(e);
-          console.log(e.data.data.package)
           wx.requestPayment({
             'timeStamp': e.data.data.timeStamp + "",
             'nonceStr': e.data.data.nonceStr,
@@ -81,14 +152,38 @@ Page({
             'signType': e.data.data.signType,
             'paySign': e.data.data.paySign,
             'success': function (res) {
-              
-              console.log(res)
+              wx.showLoading({
+                title: '支付中...',
+                mask: true
+              })
+              wx.request({
+                url: headUrl + "/mallOrderController/updateOrderStatusInMoneyReceipt.do?method=doWx" + idArr,
+                header: {
+                  "Content-Type": "application/json;charset=utf-8",
+                },
+                method: "POST",
+                success(res) {
+                  if (res.data.code == "0") {
+                    wx.hideLoading();
+                    wx.showToast({
+                      title: '支付成功',
+                      icon: 'success',
+                      duration: 2000,
+                      mask: true,
+                      success: function (res) {
+                        wx.navigateBack({
+                          delta: 1, // 回退前(默认为1) 页面
+                        })
+                      }
+                    })
+                  }
+                }
+              });
             },
             'fail': function (res) {
-              console.log(res)
               wx.showModal({
-                title: '支付提示',
-                content: e.data.data.signType,
+                title: '提示',
+                content: '支付失败',
                 showCancel: false
               })
             },

@@ -21,7 +21,7 @@
     </view>
 
     <view class="orders-footer">
-        <view class="orders-footer-total">付款合计：￥{{total}}</view>
+        <view class="orders-footer-total"><view class='total-price'><text class='total-price-top'>付款合计：￥{{total}}</text><text class='total-price-bottom' wx:if="{{isDiscount}}">总额：￥{{discountTotal}}  立减：￥{{discountMoney}}</text></view></view>
         <view class="orders-footer-btn" bindtap="toPay">去付款</view>
     </view>
 </view>

@@ -31,7 +31,7 @@ Page({
     }
   },
   formSubmit(e){
-    const value = e.detail.value;
+    let value = e.detail.value;
     if (value.addressee && value.phone && value.detailAddress && this.data.cityName != ''){
       if (!(/^1[3456789]\d{9}$/.test(value.phone))) {
         wx.showModal({

@@ -21,7 +21,6 @@
     border-bottom: 5rpx solid #70d1c9;
 }
 .goods-content{
-    padding: 40rpx;
     margin-bottom:90rpx;
 }
 .goods-price-color{
@@ -42,19 +41,20 @@
   color: #323837;
 }
 .goods-trait .goods-trait-one{
-  position: relative;
   width: 20%;
+  display: flex;
+  flex-direction: row;
 }
 .goods-trait .goods-trait-two{
-  position: relative;
   width: 20%;
+  display: flex;
+  flex-direction: row;
 }
 .goods-trait-icon {
-  position: absolute;
-  top: 0rpx;
+  align-self: center;
 }
 .goods-trait-text {
-  margin-left:32rpx
+  align-self: center;
 }
 .goods-price{
   font-size: 48rpx;

@@ -1,0 +1,41 @@
+<wxs module="utils" src="../../utils/filter.wxs"></wxs>
+<view class="main">
+  <view class='header'>
+      <view class='searchItem'>
+          <icon class="searchIcon" type="search" size="13"/>
+          <input class="search-input" placeholder='搜索商品' focus bindchange="search"></input>
+      </view>
+      <view class='header-right'>
+        <text>搜索</text>
+      </view>
+  </view>
+  <view class="goods-content">
+    <view class="newest">
+      <view class="newest-box">
+        <block wx:for="{{odd_goods}}" wx:key="{{index}}">
+          <view class="newest-list">
+              <navigator url="../details/details?productTitle={{item.productTitle}}&productType={{item.productType}}&productPrice={{item.productPrice}}&productFilePath={{item.productFilePath}}&productDescribe={{item.productDescribe}}&productId={{item.productId}}&soldOutNum={{item.soldOutNum}}">
+                <image src="{{imageHeadUrl}}{{item.productFilePath}}"></image>
+                <view class="newest-text">
+                  <text>{{utils.toSub(item.productTitle)}}</text>
+                </view>
+                <view class="newest-text-price">
+                  <view class='newest-text-price-left'>
+                    <view class='newest-price'>￥{{utils.toFix(item.productPrice)}}</view>
+                    <view class='newest-text-price-left-text'>
+                      <view>已售{{item.soldOutNum}}</view>
+                      <view class='newest-text-price-left-text-right'>
+                        <text wx:if="{{item.productDiscount != null && item.productDiscount != 0}}">特惠{{item.productDiscount}}折</text>
+                              <text wx:else>正在热售</text>
+                      </view>
+                    </view>
+                  </view>
+                  <view class='newest-text-price-right'><image src="/page/component/image/cart3.png" class="goods-cart-img" catchtap="addToCart" data-productid='{{item.productId}}' data-price='{{item.productPrice}}'></image></view>
+                </view>
+              </navigator>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

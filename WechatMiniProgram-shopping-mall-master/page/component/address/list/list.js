@@ -82,7 +82,8 @@ Page({
       const pages = getCurrentPages();
       const prevPage = pages[pages.length - 2];  //上一个页面
       prevPage.setData({
-        address: this.data.address[e.currentTarget.id]
+        address: this.data.address[e.currentTarget.id],
+        hasAddress: true
       })
 
       wx.navigateBack({

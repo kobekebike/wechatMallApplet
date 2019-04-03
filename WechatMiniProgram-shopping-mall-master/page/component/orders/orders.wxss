@@ -72,8 +72,8 @@
     left: 0;
     width: 100%;
     height: 95rpx;
-    line-height: 95rpx;
     border-top: 1rpx solid #ededed;
+    font-size: 0;
 }
 .orders-footer .orders-footer-total{
     display: inline-block;
@@ -81,6 +81,7 @@
     padding-left: 30rpx;
     box-sizing: border-box;
     color: #ff7800;
+    vertical-align:top;
 }
 
 .orders-pro-price{
@@ -95,4 +96,21 @@
     text-align: center;
     color: #fff;
     background: #70d1c9;
+    font-size: 32rpx;
+    line-height: 95rpx;
+}
+
+.total-price {
+  height: 95rpx;
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: flex-start;
+  line-height: 30rpx;
+}
+.total-price-top{
+  font-size: 32rpx;
+}
+.total-price-bottom{
+  font-size: 20rpx;
 }

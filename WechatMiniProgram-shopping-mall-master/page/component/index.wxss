@@ -181,22 +181,18 @@ view.searchItem {
     border-radius: 10rpx;
     margin-right: 20rpx;
     margin-left: 40rpx;
+    padding:5rpx;
 }
 
 .searchIcon {
-    height: 42rpx;
-    width: 42rpx;
-    align-self: center;
-    margin-left: 10rpx;
-    margin-right: 20rpx;
-    margin-top: 10rpx;
+  margin-right:5rpx;
+  align-self: center;
 }
-
-view.searchItem input {
-    flex: 1;
-    font-size: 30rpx;
+.search-content{
+  color: #c7c7cb;
+  font-size: 28rpx;
+  align-self: center;
 }
-
 .newest-price{
   text-align: left;
   padding-left: 10rpx;
