@@ -57,7 +57,8 @@
                 <text class="orders-status" wx:if="{{item.orderStatus==4}}">取消</text>
             </view>
             <view class="orders-footer">
-                <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
+                <text wx:if="{{item.productDiscount==0}}">实付：￥{{filters.toFix(item.orderAmount)}}</text>
+				<text wx:if="{{item.productDiscount!=0}}">实付：￥{{filters.toFix(item.orderAmount*item.productDiscount/10)}}</text>
                 <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders" data-orderinfo='{{item}}'>付款</button>
             </view>
           </view>
@@ -100,7 +101,8 @@
                 <text class="orders-status" wx:if="{{item.orderStatus==4}}">取消</text>
             </view>
             <view class="orders-footer">
-                <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
+               <text wx:if="{{item.productDiscount==0}}">实付：￥{{filters.toFix(item.orderAmount)}}</text>
+				<text wx:if="{{item.productDiscount!=0}}">实付：￥{{filters.toFix(item.orderAmount*item.productDiscount/10)}}</text>
                 <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders" data-orderinfo='{{item}}'>付款</button>
             </view>
         </view>
@@ -122,7 +124,8 @@
               <text class="orders-status" wx:if="{{item.orderStatus==4}}">取消</text>
           </view>
           <view class="orders-footer">
-              <text>实付：￥{{filters.toFix(item.orderAmount)}}</text>
+			 <text wx:if="{{item.productDiscount==0}}">实付：￥{{filters.toFix(item.orderAmount)}}</text>
+				<text wx:if="{{item.productDiscount!=0}}">实付：￥{{filters.toFix(item.orderAmount*item.productDiscount/10)}}</text>
               <button wx:if="{{item.orderStatus==1}}" size="mini" class="orders-btn" bindtap="payOrders" data-orderinfo='{{item}}'>付款</button>
           </view>
       </view>

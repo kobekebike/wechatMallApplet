@@ -16,9 +16,11 @@ Page({
     typeWidth: "",
     cartNum: 0
   },
-  onLoad(){
-
-  },
+  // onLoad: function () {
+  //   wx.showShareMenu({
+  //     withShareTicket: true
+  //   })
+  // },
   onReady() {//获取奇数商品详情   
     wx.showToast({
       title: "加载中...",
@@ -135,5 +137,20 @@ Page({
         }
       }
     });
+  },
+  //右上角分享功能
+  onShareAppMessage: function (res) {
+    var that = this;
+    return {
+      title: '亿吉芙商城',
+      path: 'page/component/index',
+      success: function (res) {
+        // 转发成功
+        that.shareClick();
+      },
+      fail: function (res) {
+        // 转发失败
+      }
+    }
   }
 })
