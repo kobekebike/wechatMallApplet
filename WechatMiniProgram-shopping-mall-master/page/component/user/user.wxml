@@ -63,15 +63,24 @@
           </view>
         </view>
         <view class="cart-footer" wx:if="{{prompt2.hidden}}">
-          <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="total-select" bindtap="selectAll" />
-          <icon wx:else type="circle" color="#fff" class="total-select" bindtap="selectAll" />
-          <view class="order-icon">
-            <view bindtap="selectOrderData">
-              <image src="/page/component/image/icon3.png"></image>
+        
+          <view class='cart-footer-left' bindtap="selectAll">
+            <icon wx:if="{{selectAllStatus}}" type="success_circle" color="#fff" class="" />
+          <icon wx:else type="circle" color="#fff" class="" /><text>全选</text>
+          </view>
+
+          <view class='cart-footer-middle'>
+            <text class='total-price-top'>合计：￥{{totalPrice}}</text><text class='total-price-bottom' wx:if="{{isDiscount}}">总额：￥{{discountTotal}}  立减：￥{{discountMoney}}</text>
+          </view>
+
+          <view class='cart-footer-right' bindtap="selectOrderData">
+            <view class="order-icon">
+              <view>
+                <image src="/page/component/image/icon3.png"></image>
+              </view>
             </view>
           </view>
-          <text>全选</text>
-          <view class='total-price'><text class='total-price-top'>合计：￥{{totalPrice}}</text><text class='total-price-bottom' wx:if="{{isDiscount}}">总额：￥{{discountTotal}}  立减：￥{{discountMoney}}</text></view>
+      
         </view>
         <template is="prompt" data="{{ prompt2 }}"/>
       </view>

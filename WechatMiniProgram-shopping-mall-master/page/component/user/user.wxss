@@ -185,11 +185,11 @@
     left: 0;
     width: 100%;
     height: 90rpx;
-    line-height: 90rpx;
-    padding:0 100rpx 0 80rpx;
     box-sizing: border-box;
     background: #70d1c9;
     color: #fff;
+    display: flex;
+    flex-direction: row;
 }
 .total-select{
     position: absolute;
@@ -231,5 +231,21 @@
 }
 .total-price-bottom{
   font-size: 20rpx;
-  margin-top: -50rpx;
+}
+.cart-footer-left {
+  display:flex;
+  flex-direction:row;
+  justify-content:center;
+  align-items:center;
+  width: 20%;
+}
+.cart-footer-middle {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  align-items:center;
+  width: 60%;
+}
+.cart-footer-right {
+  width: 20%;
 }

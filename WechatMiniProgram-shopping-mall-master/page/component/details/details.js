@@ -77,6 +77,7 @@ Page({
     })
   },
   toCart(){
+    this.click();
     wx.switchTab({
       url: '../cart/cart'
     })

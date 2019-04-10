@@ -25,7 +25,7 @@ Page({
       text: '暂时没有相关数据',
     },
     thumb: '../image/user-head.png',
-    nickname: '点击头像登录',
+    nickname: '点击头像',
     isAuth: false,//是否授权头像信息
     obligation: [], //待付款
     orders: [], //已付款
