@@ -140,6 +140,16 @@ Page({
       nickname: userInfo.nickName,
       isAuth: true
     })
+    wx.request({
+      url: headUrl + '/userInfoController/updateUserInfo.do?method=doWx&id=' + userId,
+      data: { "wechat" : userInfo.nickName},
+      header: {
+        'Content-Type': 'application/json'
+      },
+      method: "GET",
+      success(res){
+      }
+    })
   },
   bindTap(e) {
     const index = parseInt(e.currentTarget.dataset.index);
