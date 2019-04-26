@@ -1,4 +1,7 @@
 @import '../../common/styles/common.wxss';
+page {
+  background-color: #f6f6f6;
+}
 .main {
   width: 100%;
   font-size: 28rpx;
@@ -7,6 +10,7 @@
   display: flex;
   padding: 10rpx;
   height: 60rpx;
+  background-color: #fff;
 }
 .searchItem {
     display: flex;
@@ -31,29 +35,31 @@
   text-align:center;
 }
 .header-right text {
-  color: rgb(104, 104, 104);
+  color: #70d1c9;
 }
 
-
+.goods-content{
+  padding-top:20rpx;
+}
 .newest-box{
-    padding:0 40rpx;
+    padding:0 20rpx;
 }
 .newest-box .newest-list{
     display: inline-block;
-    width: 325rpx;
-    height: 430rpx;
-    margin:0 20rpx 20rpx 0;
+    width: 350rpx;
+    height: 480rpx;
+    margin:0 10rpx 10rpx 0;
     border-radius: 10px;
     text-align: center;
-    background: #f2f8f8;
+    background: #fff;
 }
 .newest-box .newest-list:nth-child(2n){
     margin-right: 0;
 }
 .newest-box .newest-list image{
-    width: 275rpx;
-    height: 275rpx;
-    margin: 20rpx 0 10rpx;
+    width: 350rpx;
+    height: 350rpx;
+    border-radius: 10px;
 }
 .newest-box .newest-list .newest-text{
     font-size: 30rpx;

@@ -48,9 +48,11 @@
         </view>
     </view>
   <view class="goods-tab-box">
-    <block wx:for="{{typeList}}" wx:key="{{index}}" wx:for-item="type">
-      <view class="goods-tab-nav {{curIndex === type.sort ?'on':''}}" style='width:{{typeWidth}}%;' bindtap="bindTap" data-index="{{type.sort}}">{{type.typeName}}</view>
-    </block>
+    <view class='header'>
+      <block wx:for="{{typeList}}" wx:key="{{index}}" wx:for-item="type">
+        <view class="goods-tab-nav {{curIndex === type.sort ?'on':''}}" style='width:{{typeWidth}}%;' bindtap="bindTap" data-index="{{type.sort}}">{{type.typeName}}</view>
+      </block>
+    </view>
     <view class="goods-content">
       <block wx:for="{{typeList}}" wx:key="{{index}}" wx:for-item="type">
         <view wx:if="{{curIndex === type.sort}}">

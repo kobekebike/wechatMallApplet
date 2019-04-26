@@ -6,7 +6,9 @@ swiper-item image {
     width: 100%;
     height: 100%;
 }
-
+page {
+  background-color: #f6f6f6;
+}
 .select-title,.newest-title{/**首页中的子标题的字体样式*/
     width: 100%;
     padding:30rpx 100rpx;
@@ -33,24 +35,24 @@ swiper-item image {
 }
 
 .newest-box{
-    padding:0 40rpx;
+    padding:0 20rpx;
 }
 .newest-box .newest-list{
     display: inline-block;
-    width: 325rpx;
-    height: 430rpx;
-    margin:0 20rpx 20rpx 0;
+    width: 350rpx;
+    height: 480rpx;
+    margin:0 10rpx 10rpx 0;
     border-radius: 10px;
     text-align: center;
-    background: #f2f8f8;
+    background: #fff;
 }
 .newest-box .newest-list:nth-child(2n){
     margin-right: 0;
 }
 .newest-box .newest-list image{
-    width: 275rpx;
-    height: 275rpx;
-    margin: 20rpx 0 10rpx;
+    width: 100%;
+    height: 350rpx;
+    border-radius:10px 10px 0px 0px;
 }
 .newest-box .newest-list .newest-text{
     font-size: 30rpx;
@@ -82,14 +84,14 @@ swiper-item image {
   /* flex-wrap: wrap; */
   justify-content: right;
   /* padding-bottom: 20rpx; */
-  background-color: #fbffff;
-    flex-direction: row;
-    height: 98rpx;
-    background: #f2f4f5;
-    align-items: center;
+  background-color: #fff;
+  flex-direction: row;
+  height: 98rpx;
+  align-items: center;
+  border-bottom:1rpx solid #f6f6f6;
 }
 .cates .cate {
-  width: 30%;
+  width: 20%;
   height: 40rpx;
   display: flex;
   flex-direction: column;
@@ -99,7 +101,7 @@ swiper-item image {
 }
 .cates .cate .img {
   position: absolute;
-	top: 27%;
+	top: 20%;
 	left: 87.5%;
   width: 55rpx;
   height: 55rpx;
@@ -138,7 +140,7 @@ swiper-item image {
     border-bottom: 5rpx solid #70d1c9;
 }
 .goods-content{
-  padding-top:30rpx;
+  padding-top:20rpx;
 }
 .cates .cate .cate-num{
   position: absolute;
@@ -176,13 +178,12 @@ swiper-item image {
 
 view.searchItem {
     display: flex;
-    width: 100%;
-    background: #fff;
+    width: 80%;
+    background: #f6f6f6;
     flex-direction: row;
-    border-radius: 10rpx;
-    margin-right: 20rpx;
+    border-radius: 30rpx;
     margin-left: 40rpx;
-    padding:5rpx;
+    padding:5rpx 5rpx 5rpx 20rpx;
 }
 
 .searchIcon {
@@ -208,4 +209,7 @@ view.searchItem {
   border-left:0.5px solid #ff7800;
   margin-left:10rpx;
   color:#ff7800;
+}
+.header{
+  background-color: #fff;
 }

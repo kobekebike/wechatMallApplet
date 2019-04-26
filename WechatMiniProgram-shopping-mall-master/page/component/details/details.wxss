@@ -1,5 +1,5 @@
 @import '../../common/styles/common.wxss';
-
+@import"../../utils/wxParse/wxParse.wxss";
 .goods-box{
     border-bottom: 20rpx solid #f1f5f5;
 }
