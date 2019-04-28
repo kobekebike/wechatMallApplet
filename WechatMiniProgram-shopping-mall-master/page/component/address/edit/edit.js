@@ -97,5 +97,8 @@ Page({
       cityCode: e.detail.code[2],
       cityName: valueArr[0] + "-" + valueArr[1] + "-" + valueArr[2]
     })
+  },
+  onPullDownRefresh() {//监听下拉刷新
+    wx.stopPullDownRefresh();//停止刷新
   }
 })

@@ -35,5 +35,8 @@ Page({
   },
   onUnload: function () {
     // 页面关闭
+  },
+  onPullDownRefresh() {//监听下拉刷新
+    wx.stopPullDownRefresh();//停止刷新
   }
 })
