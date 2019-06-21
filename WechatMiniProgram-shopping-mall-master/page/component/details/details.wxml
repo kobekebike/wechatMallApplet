@@ -1,13 +1,16 @@
 <import src="../../utils/wxParse/wxParse.wxml"/>
 <view class="main">
   <view class="goods-box">
+  <!--
     <swiper class="swiper_box" indicator-dots="{{indicatorDots}}" vertical="true"
             autoplay="false">
             <swiper-item>
-                <image src="{{imageHeadUrl}}{{productFilePath}}" class="slide-image"/>
+                <image src="{{imageHeadUrl}}{{productFilePath}}" class="slide-image" mode="widthFix"/>
             </swiper-item>
     </swiper>
-
+    -->
+    <!--mode="widthFix" 这个属性主要然图片的高度自适应宽度-->
+    <view><image src="{{imageHeadUrl}}{{productFilePath}}"  class="swiper_box" mode="widthFix"/></view>
     <view class="goods-title">{{productTitle}}</view>
     <view class="goods-price-color">
       <text>￥</text>
