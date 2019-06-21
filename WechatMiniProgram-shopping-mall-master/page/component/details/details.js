@@ -84,5 +84,8 @@ Page({
     wx.switchTab({
       url: '../cart/cart'
     })
+  },
+  onPullDownRefresh() {//监听下拉刷新
+    wx.stopPullDownRefresh();//停止刷新
   }
 })

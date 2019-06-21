@@ -275,5 +275,8 @@ Page({
       carts: carts
     });
     this.getTotalPrice();
+  },
+  onPullDownRefresh() {//监听下拉刷新
+    wx.stopPullDownRefresh();//停止刷新
   }
 })
