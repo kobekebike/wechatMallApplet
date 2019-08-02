@@ -133,7 +133,7 @@ page {
     border-bottom: 1rpx solid #ededed;
     box-sizing: border-box;
     text-align: center;
-    color: #c7c7cb;
+    color: #4c4c4e;
 }
 .goods-tab-nav.on{
     color: #70d1c9;
